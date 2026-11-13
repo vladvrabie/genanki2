@@ -1,0 +1,47 @@
+site_name: genanki2
+
+theme:
+  name: mkdocs
+  color_mode: auto
+  user_color_mode_toggle: true
+
+nav:
+  - Home: index.md
+  - Guide:
+      - guide/concepts.md
+      - guide/building.md
+      - guide/reading.md
+      - guide/updating.md
+      - guide/checks-and-warnings.md
+      - guide/settings.md
+      - guide/repairs.md
+  - Migrating from genanki: migrating-from-genanki.md
+  - Reference: # developer guide?
+      - reference/schema-v18.md
+      - reference/card-generation.md
+      - For contributors:
+          - reference/for-contributors/validation.md
+          - reference/for-contributors/models.md
+          - reference/for-contributors/repairs.md
+          - reference/for-contributors/packages.md
+          - reference/for-contributors/frozen-models.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      # The theme highlights code with highlight.js, so Pygments stays off
+      use_pygments: false
+  - pymdownx.superfences:
+      custom_fences:
+        # A div, not a code block, so highlight.js leaves the diagram to Mermaid
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - css/tabs.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js
+  - js/mermaid.js

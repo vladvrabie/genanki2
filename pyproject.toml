@@ -1,0 +1,60 @@
+[project]
+name = "genanki2"
+version = "0.1.0"
+description = "A spiritual successor to genanki. Generate Anki decks using Python."
+readme = "README.md"
+authors = [{ name = "Vlad Vrabie" }]
+license = "MIT"
+license-files = ["LICENSE", "LICENSES/*"]
+requires-python = ">=3.10"
+dependencies = [
+  "frozendict>=2",
+  "pydantic>=2.12",
+  "pydantic>=2.14; python_version >= '3.15'",  # first release with 3.15 wheels
+  "protobuf>=6.31",
+  "typing-extensions>=4.4",
+  "zstandard>=0.22; python_version < '3.13'",
+  "zstandard>=0.23; python_version == '3.13'", # stdlib compression.zstd from 3.14
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/genanki2"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [".claude", "todos"]
+
+[dependency-groups]
+dev = [
+  "anki>=26.8",
+  "properdocs>=1.6.7",
+  "properdocs-theme-mkdocs>=1.6.7",
+  "pymdown-extensions>=12.3",
+  "pytest>=9.1.1",
+  "pytest-xdist>=3.8.0",
+  "ruff>=0.6",
+]
+
+[tool.ruff]
+indent-width = 2
+extend-exclude = [
+  "src/genanki2/_default_rows.py",
+  "src/genanki2/_schema.py",
+  "src/genanki2/_typed_schema.py",
+  "src/genanki2/_unicode_ages.py",
+]
+force-exclude = true
+
+[tool.pytest.ini_options]
+addopts = "-n 3"
+
+[tool.basedpyright]
+reportAny = false
+reportExplicitAny = false
+reportIgnoreCommentWithoutRule = false
+reportImplicitStringConcatenation = false
+reportPrivateUsage = false
+reportUnusedCallResult = false

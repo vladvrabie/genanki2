@@ -1,0 +1,75 @@
+/* Content tabs from pymdownx.tabbed (alternate style) for the default theme.
+   Bootstrap's variables follow the light and dark color modes. */
+
+.tabbed-set {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+}
+
+/* The radio inputs hold the selected tab; they stay focusable for the keyboard */
+.tabbed-set > input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.tabbed-labels {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.tabbed-labels > label {
+  margin-bottom: -1px;
+  padding: 0.4em 1em;
+  border-bottom: 2px solid transparent;
+  color: var(--bs-secondary-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tabbed-labels > label:hover {
+  color: var(--bs-body-color);
+}
+
+.tabbed-content > .tabbed-block {
+  display: none;
+  padding-top: 0.75em;
+}
+
+.tabbed-block > :last-child {
+  margin-bottom: 0;
+}
+
+/* The checked input shows its block and marks its label, for up to 6 tabs */
+.tabbed-set > input:nth-child(1):checked ~ .tabbed-content > :nth-child(1),
+.tabbed-set > input:nth-child(2):checked ~ .tabbed-content > :nth-child(2),
+.tabbed-set > input:nth-child(3):checked ~ .tabbed-content > :nth-child(3),
+.tabbed-set > input:nth-child(4):checked ~ .tabbed-content > :nth-child(4),
+.tabbed-set > input:nth-child(5):checked ~ .tabbed-content > :nth-child(5),
+.tabbed-set > input:nth-child(6):checked ~ .tabbed-content > :nth-child(6) {
+  display: block;
+}
+
+.tabbed-set > input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+.tabbed-set > input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+.tabbed-set > input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3),
+.tabbed-set > input:nth-child(4):checked ~ .tabbed-labels > :nth-child(4),
+.tabbed-set > input:nth-child(5):checked ~ .tabbed-labels > :nth-child(5),
+.tabbed-set > input:nth-child(6):checked ~ .tabbed-labels > :nth-child(6) {
+  border-bottom-color: var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+.tabbed-set > input:nth-child(1):focus-visible ~ .tabbed-labels > :nth-child(1),
+.tabbed-set > input:nth-child(2):focus-visible ~ .tabbed-labels > :nth-child(2),
+.tabbed-set > input:nth-child(3):focus-visible ~ .tabbed-labels > :nth-child(3),
+.tabbed-set > input:nth-child(4):focus-visible ~ .tabbed-labels > :nth-child(4),
+.tabbed-set > input:nth-child(5):focus-visible ~ .tabbed-labels > :nth-child(5),
+.tabbed-set > input:nth-child(6):focus-visible ~ .tabbed-labels > :nth-child(6) {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: -2px;
+}
