@@ -2,9 +2,9 @@
 
 ![pypi](https://img.shields.io/badge/pypi-unreleased-lightgrey)
 ![versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20%7C%203.15-blue)
-[![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/vladvrabie/genanki2/blob/main/LICENSE)
 [![Pydantic v2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev)
-[![anki schema](https://img.shields.io/badge/anki%20schema-v18-blue)](docs/reference/schema-v18.md)
+[![anki schema](https://img.shields.io/badge/anki%20schema-v18-blue)](https://github.com/vladvrabie/genanki2/blob/main/docs/reference/schema-v18.md)
 
 Generate, read and update Anki decks using Python.
 
@@ -172,7 +172,7 @@ When updating a notetype:
 - adding, removing or reordering a notetype's fields or templates makes a second copy of the notetype; genanki2 emits a warning.
 - renaming is safe once fields and templates have ids, so call `Notetype.fill_missing_ids()` before the first release.
 
-See [Updating a package](docs/guide/updating.md) for more details.
+See [Updating a package](https://github.com/vladvrabie/genanki2/blob/main/docs/guide/updating.md) for more details.
 
 ```python
 pkg.media.append("audio/it_casa.mp3")
@@ -336,7 +336,7 @@ cram = filtered_deck(
 collection.decks.append(cram)
 ```
 
-An `.apkg` import skips decks that hold no cards, so an empty filtered deck arrives only through a [collection package](#collection-packages). See [`examples/filtered_decks.py`](examples/filtered_decks.py).
+An `.apkg` import skips decks that hold no cards, so an empty filtered deck arrives only through a [collection package](#collection-packages). See [`examples/filtered_decks.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/filtered_decks.py).
 
 ### Collection packages
 
@@ -349,7 +349,7 @@ Before writing, genanki2 runs its checks and warnings over everything in the pac
 - A check raises `Genanki2Error` for something Anki would reject or change on import (such as two fields with the same name).
 - A warning (`Genanki2Warning`) points at something Anki accepts but that is probably a mistake (such as a note whose first field is empty).
 
-genanki2 also repairs values. It normalizes names, tags and field text the way Anki does. A value that only Anki's Check Database would fix is repaired with a warning. [Repairs](docs/guide/repairs.md) lists them, along with the repairs to opt into and what each warning asks for.
+genanki2 also repairs values. It normalizes names, tags and field text the way Anki does. A value that only Anki's Check Database would fix is repaired with a warning. [Repairs](https://github.com/vladvrabie/genanki2/blob/main/docs/guide/repairs.md) lists them, along with the repairs to opt into and what each warning asks for.
 
 A package someone else made can hold values Anki accepts and a check refuses. Use `checks_disabled()`, `warnings_disabled()` and `dbcheck_repairs_disabled()` to turn them off. An explicit `pkg.check()`, `pkg.warn()` or repair method call inside these blocks still runs:
 
@@ -433,21 +433,21 @@ Some behaviour differs:
 
 genanki2 can't read the file genanki wrote, because it uses the old format, so go through Anki first. Import the deck, then choose File > Export and pick **Anki Deck Package**, with **Include scheduling information** and **Support older Anki versions** unticked and **Include media** ticked. Pass that export to `Package.read_apkg(path, keep_source_media=True)`, and from then on read the package each build wrote.
 
-The documentation page [Migrating from genanki](docs/migrating-from-genanki.md) has every mapping and behaviour difference, finding the note for each row, recomputing genanki's guids and renaming fields on a genanki-built notetype.
+The documentation page [Migrating from genanki](https://github.com/vladvrabie/genanki2/blob/main/docs/migrating-from-genanki.md) has every mapping and behaviour difference, finding the note for each row, recomputing genanki's guids and renaming fields on a genanki-built notetype.
 
 ## Examples
 
-Runnable scripts in [`examples/`](examples):
+Runnable scripts in [`examples/`](https://github.com/vladvrabie/genanki2/tree/main/examples):
 
-- [`new_package.py`](examples/new_package.py): two decks, two builtin notetypes, a few notes
-- [`language_deck.py`](examples/language_deck.py): rebuild a vocabulary deck from rows of data, with audio
-- [`read_update_write.py`](examples/read_update_write.py): update the package `language_deck.py` wrote
-- [`read_package.py`](examples/read_package.py): look inside a package without changing it
-- [`custom_notetypes.py`](examples/custom_notetypes.py): a styled notetype and a cloze one
-- [`custom_deck_presets.py`](examples/custom_deck_presets.py): daily limits, learning steps, FSRS
-- [`filtered_decks.py`](examples/filtered_decks.py): saved searches, in a collection package
-- [`settings.py`](examples/settings.py): when checks, warnings and database repairs run
+- [`new_package.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/new_package.py): two decks, two builtin notetypes, a few notes
+- [`language_deck.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/language_deck.py): rebuild a vocabulary deck from rows of data, with audio
+- [`read_update_write.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/read_update_write.py): update the package `language_deck.py` wrote
+- [`read_package.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/read_package.py): look inside a package without changing it
+- [`custom_notetypes.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/custom_notetypes.py): a styled notetype and a cloze one
+- [`custom_deck_presets.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/custom_deck_presets.py): daily limits, learning steps, FSRS
+- [`filtered_decks.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/filtered_decks.py): saved searches, in a collection package
+- [`settings.py`](https://github.com/vladvrabie/genanki2/blob/main/examples/settings.py): when checks, warnings and database repairs run
 
 ## License
 
-[MIT](LICENSE). Bundled Unicode data is under the [Unicode License](LICENSES/UNICODE-LICENSE-V3.txt). The protobuf descriptors are Anki's, Copyright Ankitects Pty Ltd and contributors, under the GNU AGPL, version 3 or later.
+[MIT](https://github.com/vladvrabie/genanki2/blob/main/LICENSE). Bundled Unicode data is under the [Unicode License](https://github.com/vladvrabie/genanki2/blob/main/LICENSES/UNICODE-LICENSE-V3.txt). The protobuf descriptors are Anki's, Copyright Ankitects Pty Ltd and contributors, under the [GNU AGPL, version 3 or later](https://github.com/vladvrabie/genanki2/blob/main/LICENSES/AGPL-3.0-or-later.txt).
