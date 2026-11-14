@@ -1,6 +1,6 @@
 # genanki2
 
-![pypi](https://img.shields.io/badge/pypi-unreleased-lightgrey)
+[![pypi](https://img.shields.io/pypi/v/genanki2)](https://pypi.org/project/genanki2/)
 ![versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20%7C%203.15-blue)
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/vladvrabie/genanki2/blob/main/LICENSE)
 [![Pydantic v2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev)
