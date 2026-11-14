@@ -1,7 +1,7 @@
 [project]
 name = "genanki2"
 version = "0.1.0"
-description = "A spiritual successor to genanki. Generate Anki decks using Python."
+description = "Generate, read and update Anki decks using Python. A spiritual successor to genanki"
 readme = "README.md"
 authors = [{ name = "Vlad Vrabie" }]
 license = "MIT"
