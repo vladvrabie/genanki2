@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/reference/for-contributors/repairs/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Repairs that alter what they read - genanki2</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../guide/concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../models/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../packages/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/reference/for-contributors/repairs.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#repairs-that-alter-what-they-read" class="nav-link">Repairs that alter what they read</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#mandatory-repairs" class="nav-link">Mandatory repairs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#opt-out-repairs" class="nav-link">Opt-out repairs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#values-anki-stores-and-then-trips-over" class="nav-link">Values Anki stores and then trips over</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#values-anki-refuses-to-save" class="nav-link">Values Anki refuses to save</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-repairs" class="nav-link">The repairs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#switching-the-opt-out-repairs-off" class="nav-link">Switching the opt-out repairs off</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="repairs-that-alter-what-they-read">Repairs that alter what they read</h1>
+<p>Wherever genanki2 interprets a value it reads (field-name repair, tag splitting, <code>sfld</code> and <code>csum</code>, the deck-name separator, media names), it has to leave what Anki wrote unchanged. Reading an untouched package and writing it back reproduces every row.</p>
+<p>Repairs are the exception. A repair that runs during validation runs on <code>from_row()</code> too, so a package holding a value it repairs does not come back as it went in. Repairs fall into three classes, which differ in whether a caller can switch them off.</p>
+<h2 id="mandatory-repairs">Mandatory repairs</h2>
+<p>A mandatory repair changes a value that has no effect in Anki as it is:</p>
+<ul>
+<li><strong>Bounded preset values.</strong> Anki substitutes the default for an out-of-range preset value as it reads the preset, so keeping the value keeps something inert.</li>
+<li><strong><code>cards.due</code> and <code>cards.odue</code> outside the 32-bit signed range, and <code>revlog.time</code> outside the 32-bit unsigned range.</strong> Anki reads <code>0</code> in their place as it loads the card or the review, and an apkg import stores what it loaded, so the user ends up with <code>0</code> whatever the package held.</li>
+<li><strong>Normalized names and text.</strong> Anki makes the same change when it saves the value.</li>
+<li><strong><code>notes.sfld</code> and <code>notes.csum</code>.</strong> Both are mechanical derivations of the fields, which the caller chose to change. <code>Note</code> holds neither column: preserving what was read would mean carrying two values whose only purpose is to be written back, and deciding what they mean once <code>fields</code> is edited. Recomputing them reproduces what Anki stored for an unedited note.</li>
+</ul>
+<h2 id="opt-out-repairs">Opt-out repairs</h2>
+<p>An opt-out repair changes a value that Anki repairs in the database check and nowhere else. Those values are live: a new card at position 3,000,000 stays at that position until the user runs Check Database by hand, through any number of exports and imports. The database check repairs the card values in one function (<code>fix_card_properties</code>) and the review durations in another (<code>fix_revlog_properties</code>), and the importer shifts <code>due</code> only for review and day-learning cards (<code>shift_collection_relative_dates</code>).</p>
+<p>genanki2 repairs them by default anyway. Turning a default repair into an opt-in later only stops rewriting data, while adding a repair later would start rewriting data that earlier releases preserved. <code>dbcheck_repairs_disabled()</code> turns them off as a set (see <a href="#switching-the-opt-out-repairs-off">below</a>).</p>
+<p>A repair is mirrored only when genanki2 can reach the result Anki reaches. A repair whose result depends on when Anki runs it, or on what the user's collection already holds, is left to Anki. Note, card and review ids more than a day in the future are such a case: Anki renumbers them from its clock at the moment it runs, on its copy of the package during an apkg import and in the collection at Check Database. genanki2 keeps them, and <code>Collection.warn_future_ids()</code> lists them.</p>
+<h2 id="values-anki-stores-and-then-trips-over">Values Anki stores and then trips over</h2>
+<p>genanki2 repairs or refuses a value that Anki keeps, when three conditions hold together:</p>
+<ol>
+<li>Anki accepts the value into the database, so nothing catches it on the way in.</li>
+<li>It breaks something later, in a way that does not clearly lead back to the setting.</li>
+<li>genanki2 can identify it exactly, when it is set or written.</li>
+</ol>
+<p>Three cases qualify:</p>
+<ul>
+<li><strong><code>seconds_to_show_question</code> and <code>seconds_to_show_answer</code>.</strong> The reviewer reads them through a truthiness test, so a NaN passes the guard and raises on every card once auto advance is on. Both are <code>Bounded</code>, so a NaN takes the default <code>0.0</code>, which is the documented way of turning the wait off.</li>
+<li><strong><code>ignore_revlogs_before_date</code>.</strong> Anki parses it only when FSRS computes a memory state (<code>ignore_revlogs_before_date_to_ms</code>), which first happens when an imported card is answered. <code>DeckConfigInner.check_date()</code> refuses a string that is not <code>YYYY-MM-DD</code>.</li>
+<li><strong>An empty <code>Note.guid</code>.</strong> An apkg import matches incoming notes by <code>guid</code> against a map of the user's notes, built once per import. The first import adds every note with an empty <code>guid</code>. Every later import matches all of them against the same one of the user's notes, which each of them overwrites in turn when it is newer, while the user's other notes never update. <code>Note</code> refuses an empty <code>guid</code>.</li>
+</ul>
+<p>This does not let genanki2 prefer its own values to Anki's. A value Anki repairs as it reads is repaired the same way and to the same result, which is why a bounded preset value takes its default back rather than the nearest bound. A value Anki accepts and acts on is left alone, however odd it looks.</p>
+<h2 id="values-anki-refuses-to-save">Values Anki refuses to save</h2>
+<p>A value Anki refuses when it saves the object is refused by genanki2 too. An apkg import saves every notetype it adds or updates through that same step (<code>prepare_for_update</code>), so a package holding such a value fails to import as a whole.</p>
+<ul>
+<li><strong>A notetype without fields or without templates</strong> ("1 field required", "1 template required").</li>
+<li><strong>An empty notetype, field or template name</strong>, after the repair Anki makes first: dropping <code>"</code> from a notetype name, and the characters Anki strips from a field or template name ("Empty notetype name", "Empty field name", "Empty template name").</li>
+</ul>
+<h2 id="the-repairs">The repairs</h2>
+<table>
+<thead>
+<tr>
+<th>Repair</th>
+<th>Rewrites</th>
+<th>Class</th>
+<th>Warns</th>
+<th>What Anki does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Card.wrap_due</code></td>
+<td>a new card's position of 2,000,000 or more, wrapped by <code>1_000_000 + due % 1_000_000</code></td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>fix_card_properties</code>)</td>
+</tr>
+<tr>
+<td><code>Card.clear_unexplained_original_due</code></td>
+<td><code>odue</code> without <code>odid</code>, on a learning or review card</td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>fix_card_properties</code>)</td>
+</tr>
+<tr>
+<td><code>Card.clear_unexplained_original_data</code></td>
+<td><code>odid</code> and <code>odue</code> together, when the card's own deck is not filtered</td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>check_filtered_cards</code>)</td>
+</tr>
+<tr>
+<td><code>Card.clamp_template_ord</code></td>
+<td>a template ordinal above 30,000, to 30,000</td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>fix_card_properties</code>)</td>
+</tr>
+<tr>
+<td><code>Card.clamp_interval_days</code></td>
+<td>an interval above <code>2**31 - 1</code> days, to <code>2**31 - 1</code></td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>fix_card_properties</code>)</td>
+</tr>
+<tr>
+<td><code>Note.clamp_modification_time</code></td>
+<td>a note modification time in the future, to now</td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check, for notes and no other table (<code>check_notetypes</code>)</td>
+</tr>
+<tr>
+<td><code>Review.clamp_time</code></td>
+<td>a review duration above <code>2**31 - 1</code>, to <code>2**31 - 1</code></td>
+<td>opt-out</td>
+<td>yes</td>
+<td>the same, in the database check only (<code>fix_revlog_properties</code>)</td>
+</tr>
+<tr>
+<td><code>Bounded</code>, on eighteen preset values</td>
+<td>a value outside its range, back to the field's default</td>
+<td>mandatory</td>
+<td>no</td>
+<td>substitutes the same default as it reads the preset</td>
+</tr>
+<tr>
+<td><code>Bounded</code>, on <code>Card.due</code> and <code>Card.original_due</code></td>
+<td>a value outside the 32-bit signed range, to <code>0</code></td>
+<td>mandatory</td>
+<td>no</td>
+<td>reads <code>0</code> in its place as it loads the card</td>
+</tr>
+<tr>
+<td><code>Bounded</code>, on <code>Review.time_ms</code></td>
+<td>a value outside the 32-bit unsigned range, to <code>0</code></td>
+<td>mandatory</td>
+<td>no</td>
+<td>reads <code>0</code> in its place as it loads the review</td>
+</tr>
+<tr>
+<td><code>Clamped</code>, on the learning and relearning steps</td>
+<td>a step outside its range, to the nearest bound</td>
+<td>mandatory</td>
+<td>no</td>
+<td>clamps the same way</td>
+</tr>
+<tr>
+<td><code>normalize_deck_name</code></td>
+<td>NFC and the character rules, per <code>::</code> component; a part left empty raises</td>
+<td>mandatory</td>
+<td>no</td>
+<td>the same, but saves an empty part as <code>blank</code> (<code>normalized_deck_name_component</code>)</td>
+</tr>
+<tr>
+<td><code>normalize_note_tag</code></td>
+<td>NFC and the character rules, per <code>::</code> component; a part left empty becomes <code>blank</code></td>
+<td>mandatory</td>
+<td>no</td>
+<td>the same, when it saves or imports a note (<code>normalized_tag_name_component</code>)</td>
+</tr>
+<tr>
+<td><code>normalize_notetype_name</code>, <code>normalize_field_name</code>, <code>normalize_template_name</code></td>
+<td>NFC and the character rules</td>
+<td>mandatory</td>
+<td>no</td>
+<td>the same, on every notetype save (<code>normalize_names</code>)</td>
+</tr>
+<tr>
+<td><code>normalize_field_value</code>, through <code>normalize_note_fields</code></td>
+<td>NFC, and every ASCII control character except tab and newline</td>
+<td>mandatory</td>
+<td>no</td>
+<td>the same while the <code>normalize_note_text</code> config is on, which is its default</td>
+</tr>
+<tr>
+<td><code>Note.to_row</code></td>
+<td><code>sfld</code> and <code>csum</code>, recomputed from the fields</td>
+<td>mandatory</td>
+<td>no</td>
+<td>recomputes both on every note save</td>
+</tr>
+<tr>
+<td><code>Note.to_row</code></td>
+<td><code>flags</code> to <code>0</code> and <code>data</code> to <code>""</code></td>
+<td>mandatory</td>
+<td>no</td>
+<td>reads neither column</td>
+</tr>
+</tbody>
+</table>
+<p>Three rows need more than the table holds:</p>
+<ul>
+<li><strong>Deck names and tags</strong> treat an empty <code>::</code> part differently. A deck name with one raises: the part is most likely a typo, and the <code>blank</code> Anki would save renames a deck the caller did not ask to rename. No collection Anki wrote holds one either, since Anki normalizes a deck name whenever it saves it, and the schema 15 upgrade converted every older deck the same way. A tag substitutes <code>blank</code>: Anki normalizes a note's tags only when it saves the note, and no upgrade rewrites them, so a collection Anki wrote can still hold a tag with an empty part from before Anki normalized tag components. Raising would refuse such a collection, and an apkg import substitutes <code>blank</code> itself.</li>
+<li><strong>Note text</strong> is the one normalization Anki gates on a config, <code>normalize_note_text</code>, checked when it adds, updates or transforms a note. A collection whose owner turned it off holds text genanki2 folds anyway. The config is not reachable from Anki's interface, and honouring it would give a field validator access to the collection that owns the note.</li>
+<li><strong><code>notes.flags</code> and <code>notes.data</code></strong> are dropped rather than repaired. Nothing reads those columns, and adding fields for them later would cost a caller nothing.</li>
+</ul>
+<h2 id="switching-the-opt-out-repairs-off">Switching the opt-out repairs off</h2>
+<p><code>dbcheck_repairs_disabled()</code> keeps the seven opt-out values as the file holds them, and <code>dbcheck_repairs_enabled()</code> turns the repairs back on inside such a block.</p>
+<p>Unlike the <a href="../validation/#switching-checks-and-warnings-off">other switches</a>, which an entry point reads, this one is read by the seven validators themselves: a repair runs during validation, so by the time anything is written the value is already gone. The block therefore has to wrap the read. <a href="../../../guide/repairs/#ankis-check-database">Anki's "Check Database"</a> shows the block in use.</p>
+<p>It has to wrap the update and the write too. <code>validate_assignment</code> reruns every validator of a model whichever field is assigned, and <code>Card.prepare()</code>, which also reads the switch, clears the original deck and due again at write time, since a card cannot tell when its filtered deck turns normal.</p>
+<p>Each opt-out repair is split in two: the validator in the table reads the switch, and a repair method does the work without reading it (<code>Card.repair_due_above_ceiling()</code>, <code>Card.repair_unexplained_original_due()</code>, <code>Card.repair_unexplained_original_data()</code>, <code>Card.repair_template_ord_above_ceiling()</code>, <code>Card.repair_interval_days_above_ceiling()</code>, <code>Note.repair_modification_time()</code>, <code>Review.repair_time_above_ceiling()</code>). An explicit call to a repair method inside the block still repairs, the way an explicit <code>check()</code> still checks.</p>
+<h3 id="warnings-about-kept-values">Warnings about kept values</h3>
+<p>A kept value warns at write time. Each repair has a <code>warn_</code> counterpart in the model's <code>warn()</code>, which finds nothing once the repair has run, so no value is reported twice. With <code>dbcheck_repairs_disabled()</code> alone, the round trip is byte-exact, and <code>warnings_disabled()</code> also silences the warnings about kept values.</p>
+<p>The warning that a repair raises when it changes a value is not affected by <code>warnings_disabled()</code>. That switch skips computing warnings, but a repair evaluates its condition either way, so filtering <code>Genanki2Warning</code> through the <code>warnings</code> module silences it at no extra cost. Reading the switch inside the repair method would also let an explicit repair rewrite data without saying so.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../../js/mermaid.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

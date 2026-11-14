@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/reference/schema-v18/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Collection schema v18 - genanki2</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../guide/concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../../guide/repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../for-contributors/validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../for-contributors/models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../for-contributors/repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../for-contributors/packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../for-contributors/frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../migrating-from-genanki/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../card-generation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/reference/schema-v18.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#collection-schema-v18" class="nav-link">Collection schema v18</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#quick-guide" class="nav-link">Quick guide</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#unicase-collation" class="nav-link">unicase collation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#col" class="nav-link">col</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#notes" class="nav-link">notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cards" class="nav-link">cards</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#notetypes" class="nav-link">notetypes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#fields" class="nav-link">fields</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#templates" class="nav-link">templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#decks" class="nav-link">decks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#deck_config" class="nav-link">deck_config</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#config" class="nav-link">config</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tags" class="nav-link">tags</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#revlog" class="nav-link">revlog</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#graves" class="nav-link">graves</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sqlite_stat1-and-sqlite_stat4" class="nav-link">sqlite_stat1 and sqlite_stat4</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-varies-between-two-fresh-collections" class="nav-link">What varies between two fresh collections</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="collection-schema-v18">Collection schema v18</h1>
+<p>The Anki collection is a single SQLite database. The DDL is in <code>src/genanki2/_schema.py</code>, dumped from a collection the official client created. Everything here was read from Anki's Rust source (<code>rslib/</code>) and from a freshly created collection.</p>
+<h2 id="quick-guide">Quick guide</h2>
+<p>12 tables in 4 groups:</p>
+<p><strong>Types.</strong> <code>notetypes</code> plus its <code>fields</code> and <code>templates</code> define the shape of a note: how many fields, what they are called, and the HTML templates that turns them into cards. A note points at a notetype by <code>mid</code>, and its field values are stored positionally, so field order is part of the contract.</p>
+<p><strong>Content.</strong> <code>notes</code> holds the data necessary to produce a card using a notetype. One note produces one card per template whose condition its fields satisfy, so a two-way vocabulary note (i.e. a notetype with 2 templates) produces two cards from one row of text.
+<code>cards</code> holds what you review and carry all the scheduling state.</p>
+<p><strong>Organisation.</strong> A deck is a group of cards. <code>decks</code>, although a flat table, fakes a tree through <code>::</code> in the name. <code>deck_config</code> holds scheduling presets, which decks reference by id, so many decks can share one preset.
+<code>config</code> is a collection-wide key/value store.
+<code>tags</code> is a registry of known tags, separate from the tags actually written on each note.</p>
+<p><strong>History and sync.</strong> <code>revlog</code> is an append-only log of answers and references <code>cards</code>.
+<code>graves</code> records deletions so a sync can replay them.
+<code>col</code> is a single row of collection metadata.</p>
+<p>Three special things:</p>
+<ul>
+<li><strong>No foreign keys.</strong> <code>cards.nid</code>, <code>notes.mid</code>, <code>cards.did</code> and the rest are plain integers. SQLite enforces nothing; Anki maintains referential integrity in application code and repairs it in Check Database. A row pointing at a missing parent is writable and will be dealt with on import, not rejected.</li>
+<li><strong>Config columns are serialized blobs.</strong> <code>decks.common</code>, <code>decks.kind</code>, <code>notetypes.config</code>, <code>fields.config</code>, <code>templates.config</code> and <code>deck_config.config</code> hold protobuf messages defined in <code>anki/proto/anki/</code>. This is what makes the schema opaque to plain SQL and is the reason any collection writer needs the generated protobuf modules to write anything beyond a stock notetype. <code>config.val</code> is the exception because it is JSON, not protobuf (reference: <code>rslib/src/storage/config/mod.rs</code>).</li>
+<li><strong>Two id conventions.</strong> Row ids for <code>notes</code>, <code>cards</code> and <code>revlog</code> are the current time in milliseconds. When a row already holds that id, the insert uses <code>max(id) + 1</code> instead, so adding many notes within one millisecond gives consecutive ids rather than a failure (<code>rslib/src/storage/note/add.sql</code>). Ids for <code>decks</code>, <code>notetypes</code> and <code>deck_config</code> are also timestamps at creation, but are treated as opaque stable identifiers afterwards: they are what an <code>.apkg</code> matches on when re-importing, so changing one forks the deck or notetype instead of updating it. Nothing enforces either convention; both are just what Anki happens to write.</li>
+</ul>
+<div class="mermaid">erDiagram
+  notetypes ||--|{ fields : "fields.ntid"
+  notetypes ||--|{ templates : "templates.ntid"
+  notetypes ||--o{ notes : "notes.mid"
+  notes ||--|{ cards : "cards.nid"
+  decks ||--o{ cards : "cards.did"
+  deck_config ||--o{ decks : "kind.normal.config_id"
+  cards ||--o{ revlog : "revlog.cid"</div>
+<p>The remaining four tables join to nothing, so they are left out of the diagram:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Key</th>
+<th>Holds</th>
+<th>Why it stands alone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>col</code></td>
+<td><code>id</code>, always <code>1</code></td>
+<td>Collection metadata: schema version, creation time, sync state.</td>
+<td>A singleton. Everything else in the collection is implicitly "the" collection's.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td><code>key</code></td>
+<td>Collection-wide settings, one row per setting.</td>
+<td>Keys are opaque strings, not references.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>tag</code></td>
+<td>The set of tags that exist, with their sidebar state.</td>
+<td>A registry mirroring what is written in <code>notes.tags</code>; no row points at a note.</td>
+</tr>
+<tr>
+<td><code>graves</code></td>
+<td><code>(oid, type)</code></td>
+<td>Tombstones for deleted cards, notes and decks.</td>
+<td><code>oid</code> names a row that was deleted, which says nothing about whether the id is in use now.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unicase-collation">unicase collation</h2>
+<p>Six columns are declared <code>COLLATE unicase</code>: the <code>name</code> of decks, presets, notetypes, fields and templates, and <code>tags.tag</code>. The collation is Anki's own, registered from Rust, and stdlib <code>sqlite3</code> refuses DDL that names a collation it does not know, so genanki2 registers one under the same name before running the DDL. The file stores only the name, and Anki resolves it against its own implementation when it opens the file.</p>
+<p>The comparator has to order strings as Anki's does: SQLite orders index entries physically by it, and a disagreement makes Anki's lookups through those indexes miss rows. <code>str.casefold</code> agrees with Anki's <code>unicase</code> 2.6.0 on every pair of the corpus in <code>tests/test_unicase_matches_anki.py</code>, while <code>str.lower</code> splits <code>ß</code> from <code>ss</code> and final sigma from medial sigma. Anki pins the crate to that exact version for the same reason, so a change of the pin is the signal to run the test again. <code>COLLATE NOCASE</code> is no substitute, since it folds ASCII only and breaks every non-ASCII deck name and tag.</p>
+<h2 id="col">col</h2>
+<p>One row, <code>id = 1</code>, holding collection-wide metadata.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Always <code>1</code>.</td>
+</tr>
+<tr>
+<td><code>crt</code></td>
+<td>integer</td>
+<td>Creation time, seconds. Rounded back to the day's rollover hour (4am local by default), so it is a day boundary, not the exact moment of creation. Review cards count their <code>due</code> in days from this instant, which makes it the epoch of the whole scheduler.</td>
+</tr>
+<tr>
+<td><code>mod</code></td>
+<td>integer</td>
+<td>Last modification, milliseconds.</td>
+</tr>
+<tr>
+<td><code>scm</code></td>
+<td>integer</td>
+<td>Schema modification time, milliseconds. A client whose <code>scm</code> differs from the server's must do a full sync rather than an incremental one.</td>
+</tr>
+<tr>
+<td><code>ver</code></td>
+<td>integer</td>
+<td>Schema version, <code>18</code>.</td>
+</tr>
+<tr>
+<td><code>dty</code></td>
+<td>integer</td>
+<td>Dirty flag, unused in practice, <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number for the collection, <code>0</code> in a fresh collection.</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>integer</td>
+<td>Last sync time, milliseconds, <code>0</code> if never synced.</td>
+</tr>
+<tr>
+<td><code>conf</code></td>
+<td>text</td>
+<td>Legacy v11 global config JSON. Emptied by the upgrade to v18, now <code>''</code>.</td>
+</tr>
+<tr>
+<td><code>models</code></td>
+<td>text</td>
+<td>Legacy v11 notetype JSON. Now <code>''</code>.</td>
+</tr>
+<tr>
+<td><code>decks</code></td>
+<td>text</td>
+<td>Legacy v11 deck JSON. Now <code>''</code>.</td>
+</tr>
+<tr>
+<td><code>dconf</code></td>
+<td>text</td>
+<td>Legacy v11 deck config JSON. Now <code>''</code>.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>text</td>
+<td>Legacy v11 tag JSON. Now <code>''</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The five legacy text columns are the visible seam between v11 and v18: the upgrade moved their contents into the normalized tables and blanked them, but did not drop the columns. They are <code>NOT NULL</code>, so a writer must supply <code>''</code>.</p>
+<p>No indexes beyond the primary key.</p>
+<h2 id="notes">notes</h2>
+<p>The text of a note, plus derived values that support search and duplicate detection.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Millisecond timestamp, primary key.</td>
+</tr>
+<tr>
+<td><code>guid</code></td>
+<td>text</td>
+<td>Random base91 string, ten characters. Identity across collections: the importer matches an incoming note to an existing one by <code>guid</code>, never by <code>id</code>.</td>
+</tr>
+<tr>
+<td><code>mid</code></td>
+<td>integer</td>
+<td>Notetype id. Determines how <code>flds</code> is interpreted.</td>
+</tr>
+<tr>
+<td><code>mod</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, <code>-1</code> until synced.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>text</td>
+<td>Space separated, with a leading and trailing space when non-empty (<code>vocab verb</code>), and exactly <code>''</code> when empty (<code>rslib/src/tags/mod.rs:46</code>). The padding is what makes <code>tags LIKE '% vocab %'</code> a correct whole-tag search.</td>
+</tr>
+<tr>
+<td><code>flds</code></td>
+<td>text</td>
+<td>All field values joined by <code>\x1f</code> (unit separator). Positional: field 0 is the notetype's field with <code>ord = 0</code>.</td>
+</tr>
+<tr>
+<td><code>sfld</code></td>
+<td>integer</td>
+<td>The sort field's value, HTML stripped. Which field that is comes from the notetype's <code>sort_field_idx</code>. Declared <code>integer</code> deliberately so that numeric content sorts numerically under SQLite's type affinity, while text content stays text.</td>
+</tr>
+<tr>
+<td><code>csum</code></td>
+<td>integer</td>
+<td>First four bytes of the SHA-1 of the HTML-stripped first field, big-endian (<code>rslib/src/notes/mod.rs:320</code>). Only a duplicate-detection prefilter, never an identity.</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>integer</td>
+<td>Unused, <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>text</td>
+<td>Unused, <code>''</code>.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>idx_notes_mid</code> on <code>(mid)</code>: find every note of a notetype, needed whenever a notetype changes.</li>
+<li><code>ix_notes_csum</code> on <code>(csum)</code>: the duplicate check, which narrows by checksum and then compares the actual field.</li>
+<li><code>ix_notes_usn</code> on <code>(usn)</code>: collect notes pending sync.</li>
+</ul>
+<p><code>sfld</code> and <code>csum</code> are both derived from <code>flds</code>. A writer that sets them inconsistently produces a collection that works but sorts or deduplicates wrongly, and nothing reports it.</p>
+<h2 id="cards">cards</h2>
+<p>One row per card. Every scheduling decision lives here.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Millisecond timestamp, primary key.</td>
+</tr>
+<tr>
+<td><code>nid</code></td>
+<td>integer</td>
+<td>Note id.</td>
+</tr>
+<tr>
+<td><code>did</code></td>
+<td>integer</td>
+<td>Deck id.</td>
+</tr>
+<tr>
+<td><code>ord</code></td>
+<td>integer</td>
+<td>Which template produced this card, matching <code>templates.ord</code>. For cloze notetypes it is the cloze number minus one instead.</td>
+</tr>
+<tr>
+<td><code>mod</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, <code>-1</code> until synced.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>integer</td>
+<td><code>0</code> new, <code>1</code> learning, <code>2</code> review, <code>3</code> relearning (<code>rslib/src/card/mod.rs:39</code>).</td>
+</tr>
+<tr>
+<td><code>queue</code></td>
+<td>integer</td>
+<td>Where the scheduler will look for it: <code>0</code> new, <code>1</code> learning, <code>2</code> review, <code>3</code> day learning, <code>4</code> preview repeat, <code>-1</code> suspended, <code>-2</code> buried by the scheduler, <code>-3</code> buried by the user.</td>
+</tr>
+<tr>
+<td><code>due</code></td>
+<td>integer</td>
+<td>Meaning depends on <code>queue</code>: a position in the new queue for <code>0</code>, a Unix timestamp in seconds for <code>1</code> and <code>4</code>, days since <code>col.crt</code> for <code>2</code> and <code>3</code>.</td>
+</tr>
+<tr>
+<td><code>ivl</code></td>
+<td>integer</td>
+<td>Current interval in days. <code>0</code> for a new card.</td>
+</tr>
+<tr>
+<td><code>factor</code></td>
+<td>integer</td>
+<td>Ease factor in permille, <code>2500</code> meaning 250%. <code>0</code> for a new card.</td>
+</tr>
+<tr>
+<td><code>reps</code></td>
+<td>integer</td>
+<td>Number of times answered.</td>
+</tr>
+<tr>
+<td><code>lapses</code></td>
+<td>integer</td>
+<td>Number of times a review card was failed.</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>integer</td>
+<td>Learning steps remaining, encoded as <code>steps_today * 1000 + steps_total</code>. <code>0</code> outside learning.</td>
+</tr>
+<tr>
+<td><code>odue</code></td>
+<td>integer</td>
+<td>The <code>due</code> value to restore when the card leaves a filtered deck. <code>0</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>odid</code></td>
+<td>integer</td>
+<td>The deck to return to when the card leaves a filtered deck. <code>0</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>integer</td>
+<td>User-visible colour flag, low bits of a u8. <code>0</code> for none.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>text</td>
+<td>JSON object of optional extras: <code>pos</code> (original new-queue position), <code>s</code> / <code>d</code> / <code>dr</code> (FSRS stability, difficulty, desired retention), <code>decay</code>, <code>lrt</code> (last review time), <code>cd</code> (custom scheduling data). Every key is omitted when unset, so a fresh card is <code>'{}'</code>, not <code>''</code> (<code>rslib/src/storage/card/data.rs</code>).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>ix_cards_sched</code> on <code>(did, queue, due)</code>: the scheduler's main query, "what is next in this deck".</li>
+<li><code>ix_cards_nid</code> on <code>(nid)</code>: find a note's cards, needed on every note edit.</li>
+<li><code>idx_cards_odid</code> on <code>(odid) WHERE odid != 0</code>: partial index, so it only covers cards currently in a filtered deck.</li>
+<li><code>ix_cards_usn</code> on <code>(usn)</code>: collect cards pending sync.</li>
+</ul>
+<p>A new, never-studied card is <code>type = 0, queue = 0, ivl = 0, factor = 0, reps = 0, lapses = 0, left = 0, odue = 0, odid = 0, flags = 0, data = '{}'</code>, with <code>due</code> set to the next position from the <code>nextPos</code> config key.</p>
+<h2 id="notetypes">notetypes</h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Primary key, a timestamp at creation, stable thereafter.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>text</td>
+<td><code>COLLATE unicase</code>, unique.</td>
+</tr>
+<tr>
+<td><code>mtime_secs</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>blob</td>
+<td><code>NotetypeConfig</code> protobuf: CSS, LaTeX preamble and postamble, <code>sort_field_idx</code>, kind (normal or cloze), and the per-template field requirements Anki uses to decide which cards a note generates.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>idx_notetypes_name</code> unique on <code>(name)</code>: notetype names are an enforced unique key, unlike deck names being unique only by the same kind of index.</li>
+<li><code>idx_notetypes_usn</code> on <code>(usn)</code>.</li>
+</ul>
+<p>A fresh collection ships six: Basic, Basic (and reversed card), Basic (optional reversed card), Basic (type in the answer), Cloze, Image Occlusion.</p>
+<h2 id="fields">fields</h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ntid</code></td>
+<td>integer</td>
+<td>Notetype id, half of the primary key.</td>
+</tr>
+<tr>
+<td><code>ord</code></td>
+<td>integer</td>
+<td>Position, from <code>0</code>. The index into <code>notes.flds</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>text</td>
+<td><code>COLLATE unicase</code>. The name templates reference as <code>{{Front}}</code>.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>blob</td>
+<td><code>FieldConfig</code> protobuf: font, size, right-to-left, sticky, plain text, collapsed, excluded from search.</td>
+</tr>
+</tbody>
+</table>
+<p><code>WITHOUT ROWID</code>, primary key <code>(ntid, ord)</code>.</p>
+<ul>
+<li><code>idx_fields_name_ntid</code> unique on <code>(name, ntid)</code>: field names are unique within a notetype, which is what lets a template reference a field by name.</li>
+</ul>
+<h2 id="templates">templates</h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ntid</code></td>
+<td>integer</td>
+<td>Notetype id, half of the primary key.</td>
+</tr>
+<tr>
+<td><code>ord</code></td>
+<td>integer</td>
+<td>Position, from <code>0</code>. Matches <code>cards.ord</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>text</td>
+<td><code>COLLATE unicase</code>. Shown as the card type name.</td>
+</tr>
+<tr>
+<td><code>mtime_secs</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>blob</td>
+<td><code>CardTemplateConfig</code> protobuf: <code>q_format</code> and <code>a_format</code> (the question and answer HTML), their browser variants, target deck override, browser font (<code>anki/proto/anki/notetypes.proto:104</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><code>WITHOUT ROWID</code>, primary key <code>(ntid, ord)</code>.</p>
+<ul>
+<li><code>idx_templates_name_ntid</code> unique on <code>(name, ntid)</code>.</li>
+<li><code>idx_templates_usn</code> on <code>(usn)</code>.</li>
+</ul>
+<p>The card HTML being inside a protobuf blob is the single most consequential fact in this schema for a writer: no custom card template can be produced by manipulating plain columns.</p>
+<h2 id="decks">decks</h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Primary key. <code>1</code> is always the Default deck.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>text</td>
+<td><code>COLLATE unicase</code>, unique. Hierarchy is encoded in the name with <code>::</code>, so <code>Italian::Verbs</code> is a child of <code>Italian</code>. The parent must exist as its own row.</td>
+</tr>
+<tr>
+<td><code>mtime_secs</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>common</code></td>
+<td>blob</td>
+<td><code>DeckCommon</code> protobuf: study counts, collapsed state, last studied, description flags.</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>blob</td>
+<td><code>DeckKind</code> protobuf, a oneof. Normal decks carry the <code>deck_config</code> id they use plus per-deck limit overrides and the description; filtered decks carry search terms, order and reschedule settings instead.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>idx_decks_name</code> unique on <code>(name)</code>, under <code>unicase</code>, so <code>Italian</code> and <code>italian</code> collide.</li>
+</ul>
+<p>The hierarchy being string-encoded means a subdeck costs nothing structurally: write both rows, name the child with <code>::</code>, and Anki renders the tree.</p>
+<h2 id="deck_config">deck_config</h2>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Primary key. <code>1</code> is always the Default preset.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>text</td>
+<td><code>COLLATE unicase</code>.</td>
+</tr>
+<tr>
+<td><code>mtime_secs</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>blob</td>
+<td><code>DeckConfigInner</code> protobuf: learning and relearning steps, new and review daily limits, starting ease, interval modifiers, leech threshold and action, burying options, FSRS parameters.</td>
+</tr>
+</tbody>
+</table>
+<p>No indexes beyond the primary key. Presets are few and looked up by id.</p>
+<h2 id="config">config</h2>
+<p>Collection-wide key/value settings.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>text</td>
+<td>Primary key.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>mtime_secs</code></td>
+<td>integer</td>
+<td>Last modification, seconds.</td>
+</tr>
+<tr>
+<td><code>val</code></td>
+<td>blob</td>
+<td><strong>JSON</strong>, not protobuf (<code>rslib/src/storage/config/mod.rs</code>, <code>serde_json::from_slice</code>). A boolean is the three bytes <code>true</code>, a string is quoted, so <code>sortType</code> is stored as <code>"noteFld"</code> with the quotes.</td>
+</tr>
+</tbody>
+</table>
+<p><code>WITHOUT ROWID</code>. No secondary indexes.</p>
+<p>A fresh collection has 18 keys, including <code>curDeck</code>, <code>curModel</code>, <code>nextPos</code> (the next new-card position to hand out), <code>schedVer</code>, <code>sched2021</code>, <code>creationOffset</code> (minutes of UTC offset at creation, which pairs with <code>col.crt</code> to reconstruct the local day boundary), and two bookkeeping keys of the form <code>_deck_&lt;id&gt;_lastNotetype</code> and <code>_nt_&lt;id&gt;_lastDeck</code>.</p>
+<h2 id="tags">tags</h2>
+<p>A registry of tags that exist, distinct from the tags recorded on notes.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag</code></td>
+<td>text</td>
+<td>Primary key, <code>COLLATE unicase</code>. <code>::</code> marks hierarchy, as with decks.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>collapsed</code></td>
+<td>boolean</td>
+<td>Whether the sidebar shows it collapsed.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>blob</td>
+<td>Nullable, the only nullable column in the schema.</td>
+</tr>
+</tbody>
+</table>
+<p><code>WITHOUT ROWID</code>. No secondary indexes.</p>
+<p>The authoritative tags for a note are in <code>notes.tags</code>; this table exists so the browser sidebar can list and collapse tags without scanning every note. A fresh collection has zero rows.</p>
+<p>An apkg export never writes this table, and an import rebuilds the registry from the notes it adds, so the collapsed state survives only in a colpkg. The export also strips <code>marked</code> and <code>leech</code> from every note, case-insensitively, so a note's tags can differ between a collection and a package exported from it, while the registry may still hold both.</p>
+<h2 id="revlog">revlog</h2>
+<p>Append-only log of answers, one row per button press. Drives the statistics screens and trains FSRS.</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Millisecond timestamp of the review, primary key.</td>
+</tr>
+<tr>
+<td><code>cid</code></td>
+<td>integer</td>
+<td>Card id.</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number, sync marker.</td>
+</tr>
+<tr>
+<td><code>ease</code></td>
+<td>integer</td>
+<td>Button pressed, <code>1</code> to <code>4</code>. <code>0</code> means a manual reschedule.</td>
+</tr>
+<tr>
+<td><code>ivl</code></td>
+<td>integer</td>
+<td>New interval. Positive is days, negative is seconds.</td>
+</tr>
+<tr>
+<td><code>lastIvl</code></td>
+<td>integer</td>
+<td>Previous interval, same sign convention.</td>
+</tr>
+<tr>
+<td><code>factor</code></td>
+<td>integer</td>
+<td>Ease after answering, permille. Under FSRS this holds normalized difficulty in the 100 to 1100 range instead.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>integer</td>
+<td>Milliseconds spent answering.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>integer</td>
+<td><code>0</code> learning, <code>1</code> review, <code>2</code> relearning, <code>3</code> filtered, <code>4</code> manual, <code>5</code> rescheduled (<code>rslib/src/revlog/mod.rs:65</code>).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>ix_revlog_cid</code> on <code>(cid)</code>: a card's history.</li>
+<li><code>ix_revlog_usn</code> on <code>(usn)</code>.</li>
+</ul>
+<p>An apkg carries the revlog only when exported with scheduling, and an import reads it only with <code>with_scheduling</code> on. An imported entry has its <code>cid</code> rewritten to the id its card was given, and one whose id the target already holds is dropped rather than renumbered. Deleting a card does not delete its reviews, so a row whose <code>cid</code> names no card is an ordinary state of a real collection.</p>
+<h2 id="graves">graves</h2>
+<p>Deletion tombstones, so a sync can tell "deleted here" from "not yet created here".</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oid</code></td>
+<td>integer</td>
+<td>The deleted row's id, half of the primary key.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>integer</td>
+<td><code>0</code> card, <code>1</code> note, <code>2</code> deck (<code>rslib/src/storage/graves/mod.rs:15</code>).</td>
+</tr>
+<tr>
+<td><code>usn</code></td>
+<td>integer</td>
+<td>Update sequence number. <code>-1</code> while the deletion is still pending upload.</td>
+</tr>
+</tbody>
+</table>
+<p><code>WITHOUT ROWID</code>, primary key <code>(oid, type)</code>.</p>
+<ul>
+<li><code>idx_graves_pending</code> on <code>(usn)</code>: find the pending tombstones without scanning.</li>
+</ul>
+<p>Cleared after a full sync. A newly written collection has none.</p>
+<p>Only sync reads this table. An apkg export never writes it, so a colpkg is the only package that carries graves. A grave's <code>oid</code> often names a row the collection currently holds, which is what a deck deleted and imported again under the same ids leaves behind: in a measured real collection, 5705 of 6163 card graves and 3073 of 3364 note graves did.</p>
+<h2 id="sqlite_stat1-and-sqlite_stat4">sqlite_stat1 and sqlite_stat4</h2>
+<p>These appear in a dumped collection but are not Anki's. They are SQLite's query planner statistics, produced by <code>ANALYZE</code>, which Anki runs as part of <code>vacuum; reindex; analyze</code> when the schema is marked modified (<code>rslib/src/storage/sqlite.rs:643</code>). SQLite creates and populates them itself; a writer should leave them out and let the client generate them.</p>
+<h2 id="what-varies-between-two-fresh-collections">What varies between two fresh collections</h2>
+<p>Creating an empty collection twice does not give the same bytes. Everything that moves, measured by diffing three empty collections cell by cell (two created moments apart, one under a different timezone):</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>Example</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>col.crt</code></td>
+<td><code>1785895200</code></td>
+<td>Day zero of the scheduler. Changes with the creation date and with the timezone.</td>
+</tr>
+<tr>
+<td><code>col.scm</code></td>
+<td><code>1785934748825</code></td>
+<td>Schema modification time, milliseconds.</td>
+</tr>
+<tr>
+<td><code>config</code> row <code>creationOffset</code>, <code>val</code></td>
+<td><code>-120</code></td>
+<td>UTC offset in minutes at creation. Changes with the timezone, not with time.</td>
+</tr>
+<tr>
+<td><code>config</code> row <code>curModel</code>, <code>val</code></td>
+<td><code>1785934748830</code></td>
+<td>The Basic notetype's id, as a bare JSON number. Follows the notetype ids below.</td>
+</tr>
+<tr>
+<td><code>config</code> row <code>curModel</code>, <code>mtime_secs</code></td>
+<td><code>1785934748</code></td>
+<td>Seconds timestamp. The only <code>config</code> row a fresh collection leaves with a non-zero <code>usn</code> or <code>mtime_secs</code>.</td>
+</tr>
+<tr>
+<td><code>notetypes.id</code>, and <code>fields.ntid</code> / <code>templates.ntid</code> referencing it</td>
+<td><code>1785934748830</code> through <code>...835</code></td>
+<td>The six stock notetype ids: millisecond timestamps, allocated consecutively as the notetypes are added.</td>
+</tr>
+<tr>
+<td><code>fields.config</code> blob, field 9</td>
+<td>trailing <code>48 &lt;varint&gt;</code></td>
+<td>The field's stable id, <code>rand::random()</code> (<code>rslib/src/notetype/fields.rs:41</code>).</td>
+</tr>
+<tr>
+<td><code>templates.config</code> blob, field 8</td>
+<td>trailing <code>40 &lt;varint&gt;</code></td>
+<td>The template's stable id, <code>rand::random()</code> (<code>rslib/src/notetype/templates.rs:96</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>The two random ids exist for merging notetypes on import (Anki 23.10 and later), so they identify a field or template across installations rather than describing its content. They are full-range <code>int64</code> and negative about half the time, which is why an otherwise identical <code>fields.config</code> blob is 19 bytes in one collection and 20 in the next: a negative value costs a 10-byte varint.</p>
+<p>Everything else is stable: <code>notetypes.config</code> (it carries <code>original_stock_kind</code>, not an id), all of <code>deck_config</code>, all of <code>decks</code>, <code>col.mod</code> at <code>0</code>, every remaining <code>config</code> row at <code>usn = 0, mtime_secs = 0</code>, and the five legacy text columns in <code>col</code> at <code>''</code>.</p>
+<p>Row order is stable without an <code>ORDER BY</code>. The rowid tables scan in rowid order, and the <code>WITHOUT ROWID</code> tables scan in primary key order, which is <code>(ntid, ord)</code> for <code>fields</code> and <code>templates</code> and the key string for <code>config</code>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../js/mermaid.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

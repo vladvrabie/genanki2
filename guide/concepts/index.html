@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/guide/concepts/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Concepts - genanki2</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../reference/schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../reference/for-contributors/validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../building/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/guide/concepts.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#concepts" class="nav-link">Concepts</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#package-and-collection" class="nav-link">Package and collection</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#a-collections-objects" class="nav-link">A collection's objects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#identifiers-that-keep-a-deck-updatable" class="nav-link">Identifiers that keep a deck updatable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="concepts">Concepts</h1>
+<p>An Anki package (<code>.apkg</code>) is a zip file that holds a small Anki collection and the media files that notes refer to. This page describes the objects genanki2 uses to model it and the identifiers that make a new version of a deck import as an update and not make duplicates.</p>
+<h2 id="package-and-collection">Package and collection</h2>
+<p>A package holds a small Anki collection and genanki2 models it with the same objects that Anki uses. <code>package()</code> returns two objects:</p>
+<ul>
+<li>The package holds the media files and handles reading and writing to disk, through <code>Package.read_apkg()</code> and <code>pkg.write_apkg()</code>.</li>
+<li>The collection holds the decks, notetypes, notes and cards, among other things. It can also be read and written to disk, independently of the package, using <code>Collection.read_sqlite()</code> and <code>collection.write_sqlite()</code>.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">API</label><label for="__tabbed_1_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import package
+
+pkg, collection = package()</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Collection, Package
+
+collection = Collection() # An empty collection
+# Although Anki does not start from a completely empty collection.
+# default() adds the default config entries, which are required
+collection = Collection.default()
+# anki_default() also adds the default deck, preset and builtin notetypes, but are technically optional
+collection = Collection.anki_default()
+pkg = Package(collection=collection)</code></pre>
+</div>
+</div>
+</div>
+<h3 id="package">Package</h3>
+<p>A package has two attributes:</p>
+<ul>
+<li><code>pkg.collection</code>: the collection it writes.</li>
+<li><code>pkg.media</code>: the paths of the media files it writes. A field refers to a file by its file name only, so two paths ending in the same name collide:
+    <pre class="highlight"><code class="language-python">pkg.media.append("audio/it_casa.mp3")
+pkg.media.append("more_audio/it_casa.mp3")  # Raises on the media check</code></pre>
+    A package (called "source") read with <code>keep_source_media=True</code> keeps track of media files in it and adds them to the written package, but in a separate list. See <a href="../reading/">Reading a package</a>.</li>
+</ul>
+<p>Use <code>Package.read_apkg()</code> and <code>pkg.write_apkg()</code> for disk I/O.</p>
+<p>A <code>CollectionPackage</code> is basically the same thing (same attributes, mostly the same methods), but it is interpreted as a whole collection backup and uses a different file extension, <code>.colpkg</code>. See <a href="../reading/#collection-packages">Collection packages</a>.</p>
+<h3 id="collection">Collection</h3>
+<p>The collection holds a list per table, either what was read or added manually:</p>
+<ul>
+<li><code>collection.deck_configs</code> for deck presets</li>
+<li><code>collection.decks</code> for decks</li>
+<li><code>collection.notetypes</code> for notetypes. A notetype contains all of its fields and templates inside it, so there are no dedicated lists for them.</li>
+<li><code>collection.notes</code> for notes</li>
+<li><code>collection.tags</code> for tags (this is ignored during import; it is present only for completeness' sake)</li>
+<li><code>collection.cards</code> for cards</li>
+<li><code>collection.reviews</code> for revision history</li>
+<li><code>collection.graves</code> for deleted objects (also ignored)</li>
+<li><code>collection.config</code> for configuration entries</li>
+<li><code>collection.metadata</code> for metadata, like creation time (this is always a 1 row table)</li>
+</ul>
+<p>The lists do not have to be filled by hand. <code>add_notes()</code> adds the cards to <code>collection.cards</code>, and the write process collects everything the cards refer to: the notes, their notetypes, the decks and the decks' presets. See <a href="../building/">Building a deck</a>.</p>
+<p>Some relevant methods:</p>
+<ul>
+<li><code>add_notes()</code> returns the new cards, so they can be changed before a write (see <a href="../building/#customizing-cards">Customizing cards</a>). <code>generate_missing_cards()</code> makes the cards that an edit adds, and <code>remove_notes()</code> removes notes together with their cards (see <a href="../updating/#cards-after-an-edit">Cards after an edit</a> and <a href="../updating/#removing-notes">Removing notes</a>).</li>
+<li>To find objects, use the lookup methods such as <code>collection.get_deck(name=...)</code> and <code>collection.get_note(guid=...)</code> (see <a href="../reading/">Reading a package</a>).</li>
+<li><code>Collection.read_sqlite()</code> and <code>collection.write_sqlite()</code> for disk I/O. You can read only the collection inside a package using <code>Collection.from_apkg()</code>.</li>
+</ul>
+<h2 id="a-collections-objects">A collection's objects</h2>
+<h3 id="notetypes-fields-and-templates">Notetypes, fields and templates</h3>
+<p>A <strong>notetype</strong> says which fields a note has and which cards it produces. Each card type is a <strong>template</strong>, with a front and a back written in Anki's template syntax.</p>
+<p>A notetype is either standard or cloze. A cloze notetype has a single template and makes one card per cloze number in the note (<code>{{c1::...}}</code>, <code>{{c2::...}}</code>). See <a href="../building/#cloze-notetypes">Cloze notetypes</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">API</label><label for="__tabbed_2_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import notetype
+
+# A template is a (name, front, back) tuple
+word = notetype(
+  "Italian word",
+  ["Italian", "English"],
+  [("Recognition", "{{Italian}}", "{{FrontSide}}&lt;hr id=answer&gt;{{English}}")],
+  id=1_759_600_000_000,
+)</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Field, Notetype, Template, TemplateConfig
+
+word = Notetype(
+  id=1_759_600_000_000,
+  name="Italian word",
+  fields=[Field(name="Italian"), Field(name="English")],
+  templates=[
+    Template(
+      name="Recognition",
+      config=TemplateConfig(
+        q_format="{{Italian}}",  # the front
+        a_format="{{FrontSide}}&lt;hr id=answer&gt;{{English}}",  # the back
+      ),
+    ),
+  ],
+)</code></pre>
+</div>
+</div>
+</div>
+<h3 id="notes">Notes</h3>
+<p>A <strong>note</strong> is one entry: a value for each field of its notetype.</p>
+<p><code>note.fields</code> holds the values in the order of the notetype's fields, and <code>note["English"]</code> reads or sets one by name. The values are HTML, and a note refers to a media file by its name, as in <code>[sound:it_casa.mp3]</code> (see <a href="../building/">Building a deck</a>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">API</label><label for="__tabbed_3_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import guid_for, note
+
+casa = note(word, ["casa", "house"], tags=["noun"], guid=guid_for(word.id, "casa"))</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Note, guid_for
+
+casa = Note(
+  notetype=word,
+  fields=["casa", "house"],
+  tags=["noun"],
+  guid=guid_for(word.id, "casa"),
+)</code></pre>
+</div>
+</div>
+</div>
+<h3 id="decks-and-presets">Decks and presets</h3>
+<p>A <strong>deck</strong> holds cards. Its study options come from a <strong>preset</strong> (in Anki's interface, the deck's Options). <code>::</code> in a name makes a subdeck: <code>Italian::Vocabulary</code> is <code>Vocabulary</code> inside <code>Italian</code>.</p>
+<p>A deck is either normal or filtered:</p>
+<ul>
+<li>A normal deck owns its cards and has a preset.</li>
+<li>A filtered deck has no preset: it gathers cards from normal decks by a search, so they can be studied apart for a while, and they return to their home deck when it is emptied. A card in a filtered deck has the filtered deck as <code>card.deck</code> and its home deck as <code>card.original_deck</code>. Use <code>deck.is_normal()</code>/<code>deck.is_filtered()</code> to tell them apart. Filtered decks are usually built by users in Anki, so they mostly show up when reading someone's collection backup. See <a href="../building/#filtered-decks">Filtered decks</a> on building one.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">API</label><label for="__tabbed_4_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import deck, deck_config
+
+slow = deck_config("Italian, slow", id=1_759_600_000_100, new_per_day=5)
+vocabulary = deck("Italian::Vocabulary", config=slow)</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Deck, DeckConfig, DeckConfigInner
+
+slow = DeckConfig(
+  id=1_759_600_000_100, name="Italian, slow", config=DeckConfigInner(new_per_day=5)
+)
+vocabulary = Deck(name="Italian::Vocabulary", config=slow)</code></pre>
+</div>
+</div>
+</div>
+<h3 id="cards">Cards</h3>
+<p>A <strong>card</strong> is one thing to study. A note gets one card per template whose front is not empty, or one card per cloze number on a cloze notetype.</p>
+<p>A card holds the study progress (<code>card_type</code>, <code>queue</code>, <code>due</code>, <code>interval_days</code> and others), so this is where a user's schedule lives. Every card in a newly built package is new.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">API</label><label for="__tabbed_5_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python"># One tuple of cards per note, with a card for each template that renders
+cards = collection.add_notes([casa], vocabulary)
+recognition = cards[0][0]</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Card
+
+# The template's position, and the new-card position add_notes() would give
+recognition = Card(note=casa, deck=vocabulary, template_ord=0, due=1)
+collection.cards.append(recognition)</code></pre>
+</div>
+</div>
+</div>
+<h2 id="identifiers-that-keep-a-deck-updatable">Identifiers that keep a deck updatable</h2>
+<p>When someone imports a new version of a deck that they already have, Anki decides what is an update by comparing identifiers:</p>
+<ul>
+<li>notetypes by <code>id</code> and then their fields and templates, by id (if present) or by name</li>
+<li>notes by <code>guid</code></li>
+<li>decks by name</li>
+<li>presets by <code>id</code></li>
+</ul>
+<p>An object whose identifier changed between versions arrives as a second copy, next to the first. You can spot them because Anki appends a "+" to the name (something similar to "My Notetype" and "My Notetype+").</p>
+<p>A deck that will be rebuilt needs identifiers that stay the same on every build:</p>
+<ul>
+<li><strong>Notetype ids.</strong> Without <code>id=</code>, <code>notetype()</code> makes a new one each run using the <code>monotonic_id()</code> function. Pass a <em>fixed</em> number, any integer chosen once. A millisecond timestamp is what Anki uses.</li>
+<li><strong>Field and template ids.</strong> A notetype whose fields or templates change (added, removed, reordered, or renamed without an id) arrives as a copy even with the same notetype id. <code>Notetype.fill_missing_ids()</code> gives them ids, but random ones, so a rebuild script should call it only in the first build or should pass fixed ones (<code>field("Italian", id=...)</code>). See <a href="../updating/#changing-a-notetypes-fields-or-templates">Changing a notetype's fields or templates</a>.</li>
+<li><strong>Note guids.</strong> Without <code>guid=</code>, a note gets a random one each run using the <code>guid()</code> function. <code>guid_for(notetype.id, key)</code> derives a guid from a <em>stable</em> key that names the note in your data: a word, a row id, a file name. Pass several key parts when no single one is unique (<code>guid_for(notetype.id, key1, key2, ...)</code>). Do not derive it from the whole note: a corrected translation would then change the guid, and the corrected note would arrive as a duplicate beside the old one.</li>
+<li><strong>Deck names</strong> have to stay the same. A renamed deck arrives as a new deck, and the cards that users already have stay in the old one.</li>
+</ul>
+<blockquote>
+<p>Alternatively, build a deck only <strong>once</strong>, the first time, and never rebuild it again. Any updates you need to make can be done by a <strong>read-update-write</strong> flow using genanki2 (see <a href="../updating/">Updating a package</a>). Thus, you don't have to hardcode and keep track of unique ids or guids.</p>
+</blockquote>
+<p>Cards have no identifier of their own: the import never updates a card that a user already has, as <a href="../updating/#changing-cards">Changing cards</a> explains.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../js/mermaid.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

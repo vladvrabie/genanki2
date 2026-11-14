@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/migrating-from-genanki/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Migrating from genanki - genanki2</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../guide/concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../guide/building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../guide/reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../guide/updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../guide/checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../guide/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../guide/repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../reference/schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../reference/card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../reference/for-contributors/validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../reference/for-contributors/models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../reference/for-contributors/repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../reference/for-contributors/packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../reference/for-contributors/frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../guide/repairs/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../reference/schema-v18/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/migrating-from-genanki.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#migrating-from-genanki" class="nav-link">Migrating from genanki</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#re-export-a-genanki-written-deck" class="nav-link">Re-export a genanki-written deck</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#translating-a-build-script" class="nav-link">Translating a build script</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="migrating-from-genanki">Migrating from genanki</h1>
+<p>genanki writes packages using an old collection format (schema v11). genanki2 writes the latest collection format (schema v18) and it can also read packages.</p>
+<p>Migration from genanki to genanki2 depends on whether you have the package build script or not. If you do, simply translate it: see <a href="#translating-a-build-script">Translating a build script</a>. It is recommended to use stable ids so that you can rerun the build script. See <a href="../guide/concepts/#identifiers-that-keep-a-deck-updatable">Identifiers that keep a deck updatable</a>.</p>
+<p>If you don't have a build script, but you have a shared package (<code>.apkg</code> file), try to use genanki2 to read it. If the package was written directly by genanki, the read will fail, telling you that genanki2 cannot read a v11 package. You will need to <a href="#re-export-a-genanki-written-deck">re-export a genanki-written deck</a> using Anki. From then on, use a <a href="../guide/updating/">read-update-write</a> flow with genanki2 to maintain your package.</p>
+<h2 id="re-export-a-genanki-written-deck">Re-export a genanki-written deck</h2>
+<p>Import the package into Anki and export it again:</p>
+<ol>
+<li>In Anki, choose File &gt; Export. Pick <strong>Anki Deck Package</strong> and your deck.<ul>
+<li>Tick <strong>Include media</strong>.</li>
+<li>Untick <strong>Include scheduling information</strong>, so that your own review history does not ship with the deck.</li>
+<li>Untick <strong>Support older Anki versions</strong>.</li>
+</ul>
+</li>
+<li>Read the export with <code>Package.read_apkg(path, keep_source_media=True)</code>, then change it and write a new version as described in <a href="../guide/updating/">Updating a package</a>.</li>
+</ol>
+<p>Reimporting the updated package does not create duplicates in your collection (apart as consequences of your updates) because the package contains all the identifiers that genanki wrote. See <a href="../guide/concepts/#identifiers-that-keep-a-deck-updatable">Identifiers that keep a deck updatable</a> for details.</p>
+<h3 id="finding-notes">Finding notes</h3>
+<p><code>genanki2.guid_for()</code> hashes differently from <code>genanki.guid_for()</code>, so if your update script uses this pattern, it will fail:</p>
+<pre class="highlight"><code class="language-python"># The original build script:
+import genanki
+
+word = genanki.Model(1607392319, "Italian word", fields=[...], templates=[...])
+casa = genanki.Note(
+  model=word, fields=["casa", "house"], guid=genanki.guid_for(word.model_id, "casa")
+)
+print(casa.guid)  # MM8Z-D@is/
+deck = genanki.Deck(2059400110, "Italian")
+deck.add_note(casa)
+genanki.Package(deck).write_to_file("italian.apkg")
+
+# Import italian.apkg into Anki and export it again
+
+# The genanki2 update script:
+from genanki2 import Package, guid_for
+
+pkg = Package.read_apkg("italian.apkg", keep_source_media=True)
+word = pkg.collection.get_notetype(name="Italian word")
+print(word.id)  # 1607392319
+print(guid_for(word.id, "casa"))  # BMv|*`)wXK
+print(pkg.collection.get_note(guid=guid_for(word.id, "casa")))  # None</code></pre>
+<p>Solutions:</p>
+<ol>
+<li>
+<p><strong>Find by fields.</strong> Build a dictionary from fields that identify the note, as <code>examples/read_update_write.py</code> does with <code>{note["Italian"]: note for note in collection.notes}</code>.</p>
+</li>
+<li>
+<p><strong>Find by genanki's guid.</strong> If your script called <code>genanki.guid_for(*key)</code> with stable values, compute the same guid and look it up with <code>collection.get_note(guid=...)</code>. Here is a recipe:</p>
+<pre class="highlight"><code class="language-python">import hashlib
+
+BASE91 = (
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  "!#$%&amp;()*+,-./:;&lt;=&gt;?@[]^_`{|}~"
+)
+
+def genanki_guid_for(*values: object) -&gt; str:
+  digest = hashlib.sha256("__".join(str(v) for v in values).encode()).digest()
+  n = int.from_bytes(digest[:8], "big")
+  out = ""
+  while n &gt; 0:
+    n, r = divmod(n, len(BASE91))
+    out = BASE91[r] + out
+  return out</code></pre>
+<p>Then later you can use <code>pkg.collection.get_note(guid=genanki_guid_for(word.id, "casa"))</code>.</p>
+</li>
+</ol>
+<p><strong>genanki's unstable default:</strong> A note built without <code>guid=</code> got genanki's default guid, a hash of all its field values, which changes when a field's value changes. Find those notes by a stable set of fields (solution 1).</p>
+<h3 id="field-and-template-ids">Field and template ids</h3>
+<p>genanki writes fields and templates without ids, so Anki matches them by name, and renaming one makes the next import add a second notetype. Call <code>Notetype.fill_missing_ids()</code> on each notetype in the first version you ship with genanki2. The import gives the user's notetype those ids, and from then on a rename is matched by id. See <a href="../guide/updating/#changing-a-notetypes-fields-or-templates">Changing a notetype's fields or templates</a>.</p>
+<h2 id="translating-a-build-script">Translating a build script</h2>
+<p>The overall shape stays the same: notetypes, notes, a deck, a package.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td></td>
+<td><code>pkg, col = package()</code></td>
+</tr>
+<tr>
+<td>Notetype</td>
+<td><code>m = Model(1607392319, "Simple", fields=[...], templates=[...])</code></td>
+<td><code>m = notetype("Simple", ["Q", "A"], [("Card 1", qfmt, afmt)], id=1607392319)</code></td>
+</tr>
+<tr>
+<td>Note</td>
+<td><code>n = Note(model=m, fields=["q", "a"])</code></td>
+<td><code>n = note(m, ["q", "a"])</code></td>
+</tr>
+<tr>
+<td>Deck</td>
+<td><code>d = Deck(2059400110, "Capitals")</code></td>
+<td><code>d = deck("Capitals")</code></td>
+</tr>
+<tr>
+<td>Add</td>
+<td><code>d.add_note(n)</code></td>
+<td><code>col.add_notes([n], d)</code></td>
+</tr>
+<tr>
+<td>Write</td>
+<td><code>Package(d).write_to_file("out.apkg")</code></td>
+<td><code>pkg.write_apkg("out.apkg")</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>package()</code> returns two objects. The package holds the media and is read from and written to disk; the collection holds the decks, notetypes and notes. Notes belong to the collection, and each card points at its deck.</p>
+<p><code>col.add_notes()</code> reads the whole collection on every call, so add all the notes for a deck in one call rather than one call per note.</p>
+<h3 id="notetypes">Notetypes</h3>
+<table>
+<thead>
+<tr>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Model(model_id, name, ...)</code></td>
+<td><code>notetype(name, ..., id=model_id)</code></td>
+</tr>
+<tr>
+<td><code>fields=[{"name": "Q"}]</code></td>
+<td><code>["Q"]</code></td>
+</tr>
+<tr>
+<td><code>fields=[{"name": "Q", "font": "Arial", "size": 20}]</code></td>
+<td><code>[field("Q", font_name="Arial", font_size=20)]</code></td>
+</tr>
+<tr>
+<td><code>templates=[{"name": n, "qfmt": q, "afmt": a}]</code></td>
+<td><code>[(n, q, a)]</code> or <code>[template(n, q, a)]</code></td>
+</tr>
+<tr>
+<td><code>css=...</code>, <code>latex_pre=...</code>, <code>latex_post=...</code></td>
+<td>the same keyword arguments on <code>notetype()</code></td>
+</tr>
+<tr>
+<td><code>sort_field_index=1</code></td>
+<td><code>sort_field="A"</code> or <code>sort_field_idx=1</code></td>
+</tr>
+<tr>
+<td><code>model_type=Model.CLOZE</code></td>
+<td><code>cloze=True</code></td>
+</tr>
+<tr>
+<td><code>m.set_fields(...)</code>, <code>m.set_templates(...)</code></td>
+<td><code>m.fields = [...]</code>, <code>m.templates = [...]</code></td>
+</tr>
+</tbody>
+</table>
+<p>The other keys of a field or template dictionary become keyword arguments of <code>field()</code> and <code>template()</code>:</p>
+<table>
+<thead>
+<tr>
+<th>genanki key</th>
+<th>genanki2 keyword</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font</code>, <code>size</code></td>
+<td><code>font_name</code>, <code>font_size</code></td>
+</tr>
+<tr>
+<td><code>rtl</code>, <code>sticky</code></td>
+<td><code>right_to_left</code>, <code>sticky</code></td>
+</tr>
+<tr>
+<td><code>bqfmt</code>, <code>bafmt</code></td>
+<td><code>q_format_browser</code>, <code>a_format_browser</code></td>
+</tr>
+<tr>
+<td><code>bfont</code>, <code>bsize</code></td>
+<td><code>browser_font_name</code>, <code>browser_font_size</code></td>
+</tr>
+<tr>
+<td><code>did</code></td>
+<td><code>target_deck_id</code></td>
+</tr>
+<tr>
+<td><code>media</code></td>
+<td>none, Anki no longer stores it</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>genanki also accepts <code>fields</code> and <code>templates</code> as a YAML string. genanki2 takes Python lists only.</li>
+<li>Without <code>id</code>, <code>notetype()</code> makes up a new id each run, and every rebuild then arrives as a new notetype. Pass a fixed <code>id</code> (see <a href="../guide/concepts/#identifiers-that-keep-a-deck-updatable">Identifiers that keep a deck updatable</a>), or read the notetype from the previous package.</li>
+<li>
+<p>genanki works out a note's cards by approximating Anki's rules and the approximation is wrong for some templates. genanki2 applies Anki's rules (see <a href="../reference/card-generation/">Card generation</a>), so a note can get more or fewer cards than genanki wrote. genanki's errors:</p>
+<table>
+<thead>
+<tr>
+<th>Note</th>
+<th>genanki</th>
+<th>genanki2 and Anki</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>front <code>{{#A}}{{B}}{{/A}}{{C}}</code>, only <code>A</code> filled</td>
+<td>no card</td>
+<td>card 0, through the fallback</td>
+</tr>
+<tr>
+<td>front <code>{{text:A}}</code>, <code>A</code> filled</td>
+<td>no card</td>
+<td>card 0</td>
+</tr>
+<tr>
+<td>a field holding only a space</td>
+<td>counted as filled</td>
+<td>counted as empty</td>
+</tr>
+<tr>
+<td>a cloze in a field the template does not pass through <code>cloze:</code></td>
+<td>ignored</td>
+<td>gives a card</td>
+</tr>
+<tr>
+<td><code>{{c1,2::…}}</code></td>
+<td>card 0</td>
+<td>cards 0 and 1</td>
+</tr>
+<tr>
+<td><code>{{c1::{{c2::…}}}}</code></td>
+<td>card 0</td>
+<td>cards 0 and 1</td>
+</tr>
+<tr>
+<td><code>{{c600::…}}</code></td>
+<td>card 599</td>
+<td>card 499</td>
+</tr>
+</tbody>
+</table>
+<p>genanki writes a note without any card when its requirements fail, where Anki would give it card 0.</p>
+</li>
+</ul>
+<h3 id="notes">Notes</h3>
+<table>
+<thead>
+<tr>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Note(model=m, fields=[...])</code></td>
+<td><code>note(m, [...])</code></td>
+</tr>
+<tr>
+<td><code>tags=["a", "b"]</code></td>
+<td><code>tags=["a", "b"]</code></td>
+</tr>
+<tr>
+<td><code>guid=...</code></td>
+<td><code>guid=...</code></td>
+</tr>
+<tr>
+<td><code>guid_for(*values)</code></td>
+<td><code>guid_for(notetype_id, *key)</code>, which gives other guids</td>
+</tr>
+<tr>
+<td><code>sort_field=...</code></td>
+<td>none, Anki computes it from the notetype's sort field</td>
+</tr>
+<tr>
+<td><code>due=5</code></td>
+<td><code>card.due = 5</code> on the cards <code>col.add_notes()</code> returns</td>
+</tr>
+<tr>
+<td><code>n.cards[1].suspend = True</code></td>
+<td><code>cards[1].suspend()</code>, on the cards <code>col.add_notes()</code> returns</td>
+</tr>
+<tr>
+<td><code>n.fields[0]</code></td>
+<td><code>n.fields[0]</code>, or <code>n["Q"]</code> by field name</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Without <code>guid</code>, genanki hashes all the field values, so editing a field turns the note into a new one on the user's side. genanki2 picks a random guid instead, which is not better for a rebuild: pass a guid (see <a href="../guide/concepts/#identifiers-that-keep-a-deck-updatable">Identifiers that keep a deck updatable</a>), or read the note from the previous package.</li>
+<li><code>genanki2.guid_for()</code> gives other guids than <code>genanki.guid_for()</code> for the same values. For a deck people have already imported, keep genanki's guids: use <code>genanki_guid_for()</code> from <a href="#finding-notes">Finding notes</a> and call it where the script called <code>genanki.guid_for()</code>.</li>
+<li>genanki gives every card position 0. genanki2 numbers new cards in the order that notes are added, which is the order they are studied in.</li>
+<li>A tag cannot contain a space. genanki2 also cleans each part of a tag (separated by <code>::</code>) the way Anki does.</li>
+<li>
+<p><code>col.add_notes()</code> returns the cards grouped per note, in the order of the notes:</p>
+<pre class="highlight"><code class="language-python">for front, back in col.add_notes(notes, d):
+  back.suspend()</code></pre>
+</li>
+<li>
+<p>A suspension reaches the user only when they tick "Import any learning progress" while importing. Without it, which is the default, Anki imports every card as a new card and keeps only its position.</p>
+</li>
+</ul>
+<h3 id="decks">Decks</h3>
+<table>
+<thead>
+<tr>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Deck(deck_id, name)</code></td>
+<td><code>deck(name)</code></td>
+</tr>
+<tr>
+<td><code>description="..."</code></td>
+<td><code>description="..."</code></td>
+</tr>
+<tr>
+<td><code>d.add_note(n)</code></td>
+<td><code>col.add_notes([n], d)</code></td>
+</tr>
+<tr>
+<td><code>d.add_model(m)</code></td>
+<td>not needed, the notes bring their notetype</td>
+</tr>
+<tr>
+<td><code>d.write_to_file(path)</code></td>
+<td><code>pkg.write_apkg(path)</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Anki recognises a deck by its name, so genanki2 has no deck id to keep stable.</li>
+<li>An import creates only the decks and notetypes that the package's cards use. An empty deck is not imported by Anki.</li>
+</ul>
+<h3 id="packages-and-media">Packages and media</h3>
+<table>
+<thead>
+<tr>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Package([d1, d2])</code></td>
+<td>one <code>pkg, col = package()</code>, with every deck in <code>col</code></td>
+</tr>
+<tr>
+<td><code>Package(d, media_files=["a.mp3"])</code></td>
+<td><code>pkg.media.append("a.mp3")</code></td>
+</tr>
+<tr>
+<td><code>p.write_to_file(path)</code></td>
+<td><code>pkg.write_apkg(path)</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>genanki packs media in no fixed order, and two paths with the same file name both get packed under that one name. genanki2 keeps the order you append in and refuses two paths with the same file name.</li>
+<li><code>pkg.trim_unused_media()</code> drops every media file that no note, template or stylesheet refers to.</li>
+</ul>
+<h3 id="builtin-notetypes">Builtin notetypes</h3>
+<table>
+<thead>
+<tr>
+<th>genanki</th>
+<th>genanki2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BASIC_MODEL</code></td>
+<td><code>BASIC_NOTETYPE</code></td>
+</tr>
+<tr>
+<td><code>BASIC_AND_REVERSED_CARD_MODEL</code></td>
+<td><code>BASIC_AND_REVERSED_NOTETYPE</code></td>
+</tr>
+<tr>
+<td><code>BASIC_OPTIONAL_REVERSED_CARD_MODEL</code></td>
+<td><code>BASIC_OPTIONAL_REVERSED_NOTETYPE</code></td>
+</tr>
+<tr>
+<td><code>BASIC_TYPE_IN_THE_ANSWER_MODEL</code></td>
+<td><code>BASIC_TYPE_IN_THE_ANSWER_NOTETYPE</code></td>
+</tr>
+<tr>
+<td><code>CLOZE_MODEL</code></td>
+<td><code>CLOZE_NOTETYPE</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>IMAGE_OCCLUSION_NOTETYPE</code></td>
+</tr>
+</tbody>
+</table>
+<p>These have different ids from genanki's, so to Anki they are different notetypes. A deck that used <code>BASIC_MODEL</code> and is rebuilt with <code>BASIC_NOTETYPE</code> gives its users a second notetype and a second copy of every note. For a deck people have already imported, read the notetype from the export instead, as described in <a href="#re-export-a-genanki-written-deck">Re-export a genanki-written deck</a>.</p>
+<h3 id="what-genanki2-does-not-have">What genanki2 does not have</h3>
+<ul>
+<li><code>write_to_file(path, timestamp=...)</code>, which genanki uses to make ids and modification times repeatable between runs.</li>
+<li><code>write_to_collection_from_addon()</code> and <code>write_to_db()</code>, which write into an open Anki collection from an add-on.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../js/mermaid.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

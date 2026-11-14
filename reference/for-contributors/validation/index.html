@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/reference/for-contributors/validation/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Validation - genanki2</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../guide/concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Validation</a>
+</li>
+            
+<li>
+    <a href="../models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../card-generation/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../models/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/reference/for-contributors/validation.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#validation" class="nav-link">Validation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#permissive-while-building-strict-at-the-write" class="nav-link">Permissive while building, strict at the write</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#checks-and-warnings" class="nav-link">Checks and warnings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#phases-emitters-and-entry-points" class="nav-link">Phases, emitters and entry points</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-a-write-changes-on-the-model" class="nav-link">What a write changes on the model</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#walking-the-model-tree" class="nav-link">Walking the model tree</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#switching-checks-and-warnings-off" class="nav-link">Switching checks and warnings off</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#referenced-objects-and-the-collections-lists" class="nav-link">Referenced objects and the collection's lists</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#arguments-of-fieldto_row-and-templateto_row" class="nav-link">Arguments of Field.to_row() and Template.to_row()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bounds-that-raise-and-bounds-that-repair" class="nav-link">Bounds that raise and bounds that repair</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="validation">Validation</h1>
+<p>How the pydantic models under <code>src/genanki2/models/</code> decide whether they can be written, and when those decisions run.</p>
+<h2 id="permissive-while-building-strict-at-the-write">Permissive while building, strict at the write</h2>
+<p>A model accepts an incomplete state while it is being built, so "construct empty, append later" works. Completeness is checked once, when the object claims to be finished: in <code>to_rows()</code> and the other entry points described below.</p>
+<p>The models have no strictness setting. The only way past the checks is <a href="#switching-checks-and-warnings-off"><code>checks_disabled()</code></a>, which covers a whole write.</p>
+<h2 id="checks-and-warnings">Checks and warnings</h2>
+<p>A write runs two named judgements on every model:</p>
+<ul>
+<li><code>check()</code> raises: the write cannot proceed.</li>
+<li><code>warn()</code> warns: Anki accepts the value, but does something the caller did not ask for.</li>
+</ul>
+<p>Keeping them apart lets a caller ask for either verdict without producing any rows, and turn the warnings off with <code>warnings_disabled()</code> while keeping the checks.</p>
+<p>Three base classes carry this machinery:</p>
+<ul>
+<li><code>CheckedModel</code> holds pydantic's <code>model_config</code> that every model shares and the 3 phases.</li>
+<li><code>RowModel[R]</code> adds <code>from_row()</code> and <code>to_row()</code>, and holds the library's single <code>cast</code>.<ul>
+<li><code>Notetype</code> is the exception that doesn't use <code>from_row()</code> and <code>to_row()</code> and adds its own <code>from_rows()</code> and <code>to_rows()</code> because it aggregates the fields and templates.</li>
+</ul>
+</li>
+<li><code>ProtobufModel</code> adds <code>from_bytes()</code> and <code>to_bytes()</code>.</li>
+</ul>
+<h2 id="phases-emitters-and-entry-points">Phases, emitters and entry points</h2>
+<p>Every method that serializes a model has one of three roles:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Methods</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase</td>
+<td><code>prepare()</code>, <code>check()</code>, <code>warn()</code></td>
+<td>changes or judges a model, and produces nothing</td>
+</tr>
+<tr>
+<td>Emitter</td>
+<td><code>_row()</code>, <code>_bytes()</code>, <code>CardData._json()</code>, <code>Collection._sqlite()</code>, <code>_PackageBase._write_*()</code></td>
+<td>produces output, and calls only other emitters</td>
+</tr>
+<tr>
+<td>Entry point</td>
+<td><code>to_row()</code>, <code>to_rows()</code>, <code>to_bytes()</code>, <code>to_json()</code>, <code>write_sqlite()</code>, <code>write_apkg()</code>, <code>write_colpkg()</code></td>
+<td>runs the phases over its own tree, then its emitter</td>
+</tr>
+</tbody>
+</table>
+<p>A parent reaches its children through their emitters, never through their entry points. So a write judges each model once, from the entry point the caller invoked, however deep the model sits.</p>
+<p>The whole tree is prepared before anything is checked, because a parent's checks read its children. Otherwise a collection would refuse a card for an original deck that the card's own repair is about to clear.</p>
+<p><code>Notetype.to_row()</code> runs only its row-local checks, so that <code>to_rows()</code> stays the point where a notetype is checked as a whole.</p>
+<h3 id="why-the-phases-are-methods-and-not-pydantic-validators">Why the phases are methods and not pydantic validators</h3>
+<p>The checks have to run when a package is written, not only when a model is built. A model can change after its validators last ran: a list edited in place, such as <code>notetype.templates.pop()</code>, fires no validator. And a check that reads several objects, such as a card's template ordinal against its notetype's templates, can only be judged once all of them are in their final state.</p>
+<p>Pydantic validators cannot be made to run at that point. They run when a model is built and, with <code>validate_assignment</code>, when a field is assigned. Serializing a model runs no validator.</p>
+<p>The only way to make pydantic validate an existing model again is the <code>revalidate_instances</code> setting, which applies when a model is passed into a field of another model. It does not fit either way:</p>
+<ul>
+<li>With <code>"never"</code>, the default, the model is accepted as it is and nothing runs.</li>
+<li>With <code>"always"</code>, pydantic validates the model by building a new copy of it, and of every model it holds. A notetype shared by many notes would become one copy per note. An edit to the notetype in <code>collection.notetypes</code> would then no longer reach the notes, and the walk would judge every copy separately.</li>
+</ul>
+<p>So <code>prepare()</code>, <code>check()</code> and <code>warn()</code> are plain methods, and the entry points call them.</p>
+<h2 id="what-a-write-changes-on-the-model">What a write changes on the model</h2>
+<p>The emitters change nothing. A write changes the models only in <code>prepare()</code>, in three places:</p>
+<ul>
+<li><code>TimestampedRowModel.prepare()</code> sets the modification time of a note or notetype changed since it was last stamped.</li>
+<li><code>Collection.prepare()</code> appends referenced objects to the collection's lists (see <a href="#referenced-objects-and-the-collections-lists">Referenced objects and the collection's lists</a>).</li>
+<li><code>Card.prepare()</code> clears an original deck and due that the card's own deck no longer explains. Its validator makes the same repair, but a card cannot tell when its filtered deck turns normal.</li>
+</ul>
+<p>Each is idempotent: a second write with no edit in between writes the same rows.</p>
+<p>A model holds two kinds of state about the files around it, and only one of them follows a write:</p>
+<ul>
+<li><strong>What the model was read from</strong> stays as the read left it: the fingerprint of the row, the modification time and id read, and a package's kept media source. Checks and warnings compare against it to report what changed since the read.</li>
+<li><strong>What has been published</strong> follows the writes: the time a note or notetype was last stamped with, and the content it was stamped for. A later write compares against it, so an edit made after one write is stamped again by the next. A write that leaves the time where it was, in the same second as the last stamp or inside <code>timestamping_disabled()</code>, leaves this state too, and the next write stamps the edit.</li>
+</ul>
+<p>The published state lives on the model, not on the package or collection that wrote it. Anki compares an incoming note with the copy in the user's collection, and every package of a deck feeds that one collection, so a note written into two packages has one history. The second package carries the first one's stamp when the note is unchanged since, and a later one when it is not.</p>
+<p>A package written over its kept source is refused rather than followed for the same reason: the source is read state, describing the file the media is copied from (see <a href="../packages/#a-kept-media-source-is-checked-before-writing">A kept media source is checked before writing</a>).</p>
+<h2 id="walking-the-model-tree">Walking the model tree</h2>
+<p>A phase called with <code>recursive=True</code> runs on every model reachable from where it is called, each object once. The walk lives in <code>CheckedModel</code>. It follows every <code>CheckedModel</code> that a field holds, directly or inside a container, so a field added later is covered without a hand-written branch.</p>
+<p>To keep the walk cheap, it reads only the fields whose annotation could hold a model, decided once per class. The strings in <code>Note.fields</code> and the scalar columns are never walked. A test checks that reading every field would reach the same objects.</p>
+<p>The walk gathers the reachable models breadth first, telling objects apart by identity, and runs the phase on each with <code>recursive=False</code>. An override reads <code>recursive=False</code> as "apply only my own rules". The result:</p>
+<ul>
+<li>A check from a note covers its notetype.</li>
+<li>A check from a review covers its card, the card's note and decks, and the notetype.</li>
+<li>From a collection, a notetype that every note shares is judged and warned about once, not once per note.</li>
+</ul>
+<p>Some details follow from how the walk is built:</p>
+<ul>
+<li>The set of models already seen lives for one call. A phase run inside another, such as a <code>to_bytes()</code> inside a check, starts a walk of its own.</li>
+<li>A model is handed to the phase before its fields are read, so the walk follows what the phase leaves behind. A collection inside a package collects its references when it is prepared, and the models it collects are then prepared too.</li>
+<li>An equal copy of a model held somewhere else is a separate object, and is judged separately. <code>collect_*</code> refuses an unequal one at write time.</li>
+</ul>
+<h2 id="switching-checks-and-warnings-off">Switching checks and warnings off</h2>
+<p><code>checks_disabled()</code> and <code>warnings_disabled()</code> turn off what a write runs automatically, so that a package Anki wrote can be written back even when it holds a value a genanki2 check rejects. <code>checks_enabled()</code> and <code>warnings_enabled()</code> turn them back on inside such a block (see <a href="../../../guide/settings/#checks">Checks</a>).</p>
+<p>The switches are read at the entry point, never inside a phase, so an explicit <code>check()</code> or <code>warn()</code> inside the block still runs. Preparation runs whatever the switches say, since collecting fills the lists the writer writes from. Only the context managers are public, so a disabled state cannot outlive the block that set it.</p>
+<p><code>dbcheck_repairs_disabled()</code> is the exception: its repairs run during validation, so the validators read it. See <a href="../repairs/#switching-the-opt-out-repairs-off">Switching the opt-out repairs off</a>.</p>
+<h2 id="referenced-objects-and-the-collections-lists">Referenced objects and the collection's lists</h2>
+<p>Models refer to each other as objects: a card holds its note and its deck, a note holds its notetype, etc. The collection also keeps flat lists (<code>notes</code>, <code>decks</code>, etc.) and the writer writes rows from those lists only. Two things can go wrong between the references and the lists:</p>
+<ul>
+<li><strong>An object is referenced but missing from its list.</strong> Its row would not be written, and the row referring to it would name an id that the file does not hold.</li>
+<li><strong>Two different objects share one id.</strong> For example, a card's note and a note already in <code>collection.notes</code> have the same id but different fields or modification times. Only one row can be written for that id, and nothing says which one.</li>
+</ul>
+<p>Collecting handles both (<code>Collection.collect_references()</code>, which the prepare phase of every write runs). It appends each referenced object that is missing from its list, and raises when the list already holds a different object under the same id. Collecting compares content, because it decides which object gets written. So a caller can append just the cards it builds: their notes, decks, notetypes and presets fill in by themselves.</p>
+<p><code>Collection.check_referential_integrity()</code> asks a narrower question: does every note's notetype, every card's note and every card's deck have its id in the matching list? It compares ids only, because the file stores only ids, and Anki resolves a row whose id is in the file whatever the object behind it holds. A note held in two different versions therefore passes this check, and only collecting refuses it.</p>
+<p>In a write, collecting runs before any check, so the check finds the lists already filled. Calling <code>Collection.check()</code> without preparing first reports a reference that collecting would have added.</p>
+<h2 id="arguments-of-fieldto_row-and-templateto_row">Arguments of <code>Field.to_row()</code> and <code>Template.to_row()</code></h2>
+<p>A field or template row holds two values that the field or template does not own: the id of its notetype (<code>ntid</code>) and its position in the notetype's list (<code>ord</code>). So <code>Field.to_row(notetype_id, ordinal)</code> and <code>Template.to_row(notetype_id, ordinal)</code> take them as two plain ints and write them unchecked. The <code>fields</code> and <code>templates</code> tables declare no foreign key, so a wrong <code>ntid</code> would write rows that no notetype owns, without any error from SQLite.</p>
+<p>Every other value a write produces is checked: a model attribute by its annotation, and a row read with <code>from_row()</code> by <code>model_validate</code>.</p>
+<p>The two ints need no check of their own, because both come from the notetype. <code>Notetype.to_rows()</code> passes <code>self.id</code>, which <code>Notetype</code> already validates, and an ordinal from <code>enumerate</code>, which is 0, 1, 2… by construction. Validating the notetype's id covers the <code>ntid</code> of every row.</p>
+<p>What no validation can show is that <code>to_rows()</code> passes these values down correctly. Two tests check it:</p>
+<ul>
+<li><code>test_the_owning_id_comes_from_the_notetype</code> changes the notetype's id and checks that every field and template row carries the new one.</li>
+<li><code>test_ordinals_follow_list_position</code> reverses the list and checks that the <code>ord</code> values still run 0, 1, 2… in the new order.</li>
+</ul>
+<p>Checking the arguments as well would mean <code>pydantic.validate_call</code> on both methods. In lax mode it also turns <code>"1"</code> into <code>1</code>, so it would catch almost nothing the notetype does not already catch.</p>
+<h2 id="bounds-that-raise-and-bounds-that-repair">Bounds that raise and bounds that repair</h2>
+<p>How Anki reads a column decides what genanki2 does with a value out of range:</p>
+<ul>
+<li><strong>Anki reads the column strictly:</strong> a value that does not fit makes the whole row unreadable, so the bound raises. A bound that raises refuses nothing Anki would open.</li>
+<li><strong>Anki falls back to another value:</strong> Anki reads the fallback in place of what is stored, so every code path that loads the row sees the fallback, and an apkg import stores it. genanki2 repairs the value to the same fallback as it reads it, as a mandatory repair (see <a href="../repairs/#the-repairs">The repairs</a>). This covers the preset values under <code>Bounded</code>, <code>Card.due</code> and <code>Card.original_due</code> (<code>0</code> outside the 32-bit signed range), and <code>Review.time_ms</code> (<code>0</code> outside the 32-bit unsigned range).</li>
+</ul>
+<p>A value inside Anki's type can still be one that Anki's database check changes: a <code>Card.template_ord</code> above 30,000, or a <code>Card.interval_days</code> or <code>Review.time_ms</code> above <code>2**31 - 1</code>. Anki opens such a value as it is, so it is not a bound but an <a href="../repairs/#opt-out-repairs">opt-out repair</a>.</p>
+<p>Ids and times are bounded to values that make sense, even though Anki reads them as any 64-bit integer: an id is positive, and a time is 0 or later. Anki never writes anything else, and nothing in Anki gives a negative time or id a meaning. The cost is that genanki2 cannot read a collection holding such a value, so the bound is widened if one turns up in real data.</p>
+<p><code>Review.review_type</code> is the one value read with a fallback that genanki2 keeps. Anki reads a review kind it does not know as a learning review, while the field is <code>ReviewType | int</code> and keeps the number. The fallback is what an older Anki makes of a kind a newer Anki added, and repairing it would erase the kind for the newer Anki too.</p>
+<p><code>usn</code> is bounded only by its type, although Anki writes nothing below -1. A value below -1 makes an object count as already synced: a client sync sends the objects whose usn is -1, and the server those at or above the client's last count. Nothing genanki2 writes is held back by it, but only because of two Anki behaviours: an apkg import replaces every <code>usn</code> with the collection's own, and a colpkg restore forces a full sync, which uploads the whole file whatever each row's <code>usn</code>. If either changes, a value below -1 could keep an object from ever syncing, and the bound has to be reconsidered.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../../js/mermaid.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

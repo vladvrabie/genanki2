@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/guide/repairs/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Repairs - genanki2</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../reference/schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../reference/for-contributors/validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../settings/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../migrating-from-genanki/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/guide/repairs.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#repairs" class="nav-link">Repairs</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#automatic-repairs" class="nav-link">Automatic repairs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#opt-in-repairs" class="nav-link">Opt in repairs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#solving-warnings-and-errors" class="nav-link">Solving warnings and errors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="repairs">Repairs</h1>
+<p>genanki2 changes automatically some of the values it is given or it reads. Most of these changes would happen anyway: Anki silently updates the value on an import, on a save or when "Check Database" is run. Any genanki2 repair that mirrors what "Check Database" does emits a warning.</p>
+<p>Other repairs available in genanki2 are opt in. Many warnings and errors name the call, or the edit, that makes them go away.</p>
+<p>This page lists the automatic and opt in repairs and how to solve errors and warnings. The reasons behind each automatic repair, and where Anki makes the same one, are in <a href="../../reference/for-contributors/repairs/">Repairs that alter what they read</a>.</p>
+<h2 id="automatic-repairs">Automatic repairs</h2>
+<h3 id="normalized-values-on-save">Normalized values on save</h3>
+<p>These run whenever a value is set, whether by the caller or by a read, and they <strong>never warn</strong>. Anki would make each change itself, so the package imports the same either way.</p>
+<ul>
+<li><strong>Normalizing names and text:</strong> deck names, tags, notetype names, field names and template names;</li>
+<li><strong><code>notes.sfld</code> and <code>csum</code>:</strong> a note's sort field and checksum are recomputed from its fields on every write;</li>
+<li><strong>Out-of-range preset values:</strong> 18 preset scalars go back to their default when set outside the range that Anki accepts. The learning and relearning steps are clamped to the nearest bound.</li>
+<li><strong>Unreadable dues and durations:</strong> <code>Card.due</code> and <code>Card.original_due</code> outside the 32-bit signed range, and <code>Review.time_ms</code> outside the 32-bit unsigned range, become <code>0</code>, which is what Anki reads in their place.</li>
+<li><strong>A normal deck's preset id:</strong> a deck's <code>Deck.config.id</code> (if set) has priority over <code>Deck.kind.config_id</code>, which gets overwritten;</li>
+<li><strong>Normalizing media file names:</strong> extraction and <code>keep_source_media=True</code> store each file under the normalized name (using <code>normalize_media_name()</code>), with a suffix when two names repair to the same one. The references in notes, CSS and templates are not updated and a warning lists the renames to apply (see <a href="#media-references">Media references</a> below).</li>
+</ul>
+<p>A validator runs when a field is assigned, but there are some edge cases. One such case is mutable containers which don't trigger them, so a list changed in place is not repaired. Examples:</p>
+<ul>
+<li><code>DeckConfig.config.learn_steps.append(...)</code> skips the clamp and the write refuses the steps with a message asking to assign the list back.</li>
+<li>Changing <code>Deck.kind.config_id</code> directly skips the preset id copy and the write refuses the deck until <code>Deck.sync_normal_kind_config_id()</code> runs.</li>
+</ul>
+<h3 id="ankis-check-database">Anki's "Check Database"</h3>
+<p>Anki stores these values until the user runs Tools &gt; Check Database. genanki2 repairs them when set or read and warns each time about it.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Repair</th>
+<th>Method that makes the same repair</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Card.due &gt;= 2 000 000</code> on a new card</td>
+<td>wrapped into <code>[1 000 000, 1 999 999]</code></td>
+<td><code>Card.repair_due_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><code>Card.original_due</code> on a card with no original deck</td>
+<td>cleared</td>
+<td><code>Card.repair_unexplained_original_due()</code></td>
+</tr>
+<tr>
+<td><code>Card.original_deck</code> and <code>original_due</code> on a card in a normal deck</td>
+<td>both cleared, again at write time</td>
+<td><code>Card.repair_unexplained_original_data()</code></td>
+</tr>
+<tr>
+<td><code>Card.template_ord &gt; 30 000</code></td>
+<td>clamped to <code>30 000</code></td>
+<td><code>Card.repair_template_ord_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><code>Card.interval_days &gt; 2 147 483 647</code></td>
+<td>clamped to <code>2 147 483 647</code></td>
+<td><code>Card.repair_interval_days_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><code>Note.modification_time_s</code> in the future</td>
+<td>set to now</td>
+<td><code>Note.repair_modification_time()</code></td>
+</tr>
+<tr>
+<td><code>Review.time_ms &gt; 2 147 483 647</code></td>
+<td>clamped to <code>2 147 483 647</code></td>
+<td><code>Review.repair_time_above_ceiling()</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>dbcheck_repairs_disabled()</code> keeps the values unchanged. The block has to cover the read, the update and the write because a validator repairs a value on any assignment to its model and the original deck is cleared again at write time:</p>
+<pre class="highlight"><code class="language-python">from genanki2 import Package, dbcheck_repairs_disabled
+
+with dbcheck_repairs_disabled():
+  pkg = Package.read_apkg("italian.apkg", keep_source_media=True)
+  ...  # the update
+  pkg.write_apkg("italian-v2.apkg")</code></pre>
+<p>A kept value warns at write time and names the method in the table. A repair called inside the block works, so specific fixes can be applied. <code>dbcheck_repairs_enabled()</code> turns the repairs back on inside a disabled block.</p>
+<h3 id="repairs-at-write-time">Repairs at write time</h3>
+<p>Writing a package or a collection first collects every object referenced by another object: notes, decks, notetypes, etc. When a deck references preset 1 and the collection does not hold it, the builtin <code>DEFAULT_DECK_CONFIG</code> is added. A card's original deck and due are checked again once the decks are final, as in the table above.</p>
+<h2 id="opt-in-repairs">Opt in repairs</h2>
+<p>Nothing in this section is called inside genanki2.</p>
+<h3 id="media-references">Media references</h3>
+<p>Reading a package can rename media files (see above), and a write refuses a name Anki would not store, listing the name each file should have. In both cases the references to the old names need the same rename.</p>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>What it changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Package.replace_media_references(renames)</code></td>
+<td>every reference to a renamed file: note fields, and names beginning with <code>_</code> in notetype CSS and templates</td>
+</tr>
+<tr>
+<td><code>Package.read_apkg(..., repair_media_references=True)</code></td>
+<td>applies the renames the read made before returning, instead of warning</td>
+</tr>
+<tr>
+<td><code>Note.replace_media_references(renames)</code>, <code>Notetype.replace_underscored_css_imports(renames)</code>, <code>Template.replace_underscored_references(renames)</code></td>
+<td>the same rename for one note, stylesheet or template</td>
+</tr>
+<tr>
+<td><code>Package.trim_unused_media()</code></td>
+<td>drops every file nothing references, like Anki's Tools &gt; Check Media</td>
+</tr>
+</tbody>
+</table>
+<p>A read that stores a file under a new name prints the renames as a map that <code>replace_media_references()</code> can take:</p>
+<pre class="highlight"><code class="language-python">pkg = Package.read_apkg("shared.apkg", keep_source_media=True)
+# Genanki2Warning: MediaEntries: media map contains filenames that Anki would not
+# store. [...] Pass this mapping to `genanki2.Package.replace_media_references()`:
+# {
+#   'casa?.mp3': 'casa.mp3',
+# }
+pkg.replace_media_references({"casa?.mp3": "casa.mp3"})</code></pre>
+<p><code>repair_media_references=True</code> makes the same call during the read, without the warning:</p>
+<pre class="highlight"><code class="language-python">pkg = Package.read_apkg(
+  "shared.apkg", keep_source_media=True, repair_media_references=True
+)</code></pre>
+<h3 id="cards-and-notes">Cards and notes</h3>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>What it changes</th>
+<th>Anki equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Collection.generate_missing_cards(deck=None)</code></td>
+<td>adds the cards that a note renders and does not have yet, for example after filling a field that a template's front needs</td>
+<td>the cards Anki adds when a note is edited</td>
+</tr>
+<tr>
+<td><code>Collection.remove_empty_cards(keep_notes=False)</code></td>
+<td>removes the cards that a note no longer renders, with their reviews, and a note whose cards are all empty unless <code>keep_notes=True</code></td>
+<td>Tools &gt; Empty Cards</td>
+</tr>
+<tr>
+<td><code>Collection.repair_next_new_card_position()</code></td>
+<td>moves the new-card position counter past the highest position a new card holds, so added notes are studied after the existing ones</td>
+<td>Check Database</td>
+</tr>
+<tr>
+<td><code>Card.repair_due_above_ceiling()</code>, <code>Card.repair_unexplained_original_due()</code>, <code>Card.repair_unexplained_original_data()</code>, <code>Card.repair_template_ord_above_ceiling()</code>, <code>Card.repair_interval_days_above_ceiling()</code>, <code>Note.repair_modification_time()</code>, <code>Review.repair_time_above_ceiling()</code></td>
+<td>the Check Database repairs above, for one card, note or review</td>
+<td>Check Database</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decks-and-presets">Decks and presets</h3>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>What it changes</th>
+<th>Anki equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Collection.collect_default_deck()</code></td>
+<td>adds the builtin <code>DEFAULT_DECK</code> when no deck has id 1</td>
+<td>none: Anki cannot study a collection without it</td>
+</tr>
+<tr>
+<td><code>Collection.repair_missing_deck_configs()</code></td>
+<td>points every normal deck whose preset the collection does not hold at preset 1</td>
+<td>the fallback Anki makes each time it reads such a deck, without saving it</td>
+</tr>
+<tr>
+<td><code>DeckConfig.repair_unsearchable_name()</code></td>
+<td>drops the double quotes and trailing backslashes that keep the FSRS optimizer from finding the preset's cards, and warns on an empty name</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notetypes-and-templates">Notetypes and templates</h3>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>What it changes</th>
+<th>Anki equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Notetype.fill_missing_ids()</code></td>
+<td>gives every field and template without an id a random one, so a later rename is matched by id</td>
+<td>the id Anki gives a field or template when it creates one</td>
+</tr>
+<tr>
+<td><code>Notetype.repair_sort_field_idx()</code></td>
+<td>clamps a sort field index past the last field to the last field</td>
+<td>the same clamp on save</td>
+</tr>
+<tr>
+<td><code>Template.repair_target_deck_id()</code></td>
+<td>clears a deck override, so the template's cards go to the deck of their siblings; an override to deck 1 is kept</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><code>fill_missing_ids()</code> generates new ids on every run. Call it only in the first build and read the package from then on: a script that rebuilds an already imported deck and calls it each time duplicates the notetype on the next import.</p>
+<h2 id="solving-warnings-and-errors">Solving warnings and errors</h2>
+<p>Each row indicates the class that raises the message, whether it is a warning or an error and how the message starts. The messages are raised during writing, if not mentioned otherwise. <code>N</code> stands for a number and <code>X</code> for a name or a list.</p>
+<h3 id="media">Media</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Type</th>
+<th>Message</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MediaEntries</code></td>
+<td>warning, on a read</td>
+<td><code>media map contains filenames that Anki would not store</code></td>
+<td>pass the printed mapping to <code>Package.replace_media_references()</code>, or read with <code>repair_media_references=True</code></td>
+</tr>
+<tr>
+<td><code>MediaEntries</code></td>
+<td>warning, on a read</td>
+<td><code>media map contains duplicate filenames</code></td>
+<td>rename the files, then rename their references with <code>Package.replace_media_references()</code></td>
+</tr>
+<tr>
+<td><code>Package</code></td>
+<td>warning, on a read</td>
+<td><code>the package carries N media files</code></td>
+<td>read with <code>extract_dir</code> or <code>keep_source_media=True</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#package"><code>Package</code></a></td>
+<td>error</td>
+<td><code>not all media file names are normalized</code></td>
+<td>rename each file on disk to the name the listing gives, then rename the references with <code>Package.replace_media_references()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#package"><code>Package</code></a></td>
+<td>error</td>
+<td><code>some notes, notetypes or templates reference media files the package does not carry</code></td>
+<td>add each file to <code>media</code>, or correct the reference; when the source package stores the file under a repaired name, the message prints the mapping for <code>Package.replace_media_references()</code> or <code>repair_media_references=True</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#collectionpackage"><code>CollectionPackage</code></a></td>
+<td>warning</td>
+<td><code>some notes, notetypes or templates reference media files the package does not carry</code></td>
+<td>add each file to <code>media</code>, or correct the reference; when the source package stores the file under a repaired name, the message prints the mapping for <code>Package.replace_media_references()</code> or <code>repair_media_references=True</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#package"><code>Package</code></a></td>
+<td>warning</td>
+<td><code>no note references media files X</code></td>
+<td>normalize the references with <code>normalize_media_name()</code> to see which files are unused, then <code>Package.trim_unused_media()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cards-notes-and-reviews">Cards, notes and reviews</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Type</th>
+<th>Message</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>new card position N is at or above 2,000,000 and was not repaired</code></td>
+<td><code>Card.repair_due_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>original due N should be cleared</code></td>
+<td><code>Card.repair_unexplained_original_due()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>original deck N and original due N should be cleared</code></td>
+<td><code>Card.repair_unexplained_original_data()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>template ordinal N is above 30,000 and was not repaired</code></td>
+<td><code>Card.repair_template_ord_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>interval of N days is above 2**31 - 1 and was not repaired</code></td>
+<td><code>Card.repair_interval_days_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>warning</td>
+<td><code>card N is typed as review or relearning but carries no ease factor</code></td>
+<td>set the factor to the one the card would have graduated with, 2500 by default</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#card"><code>Card</code></a></td>
+<td>error</td>
+<td><code>card N counts due in days since the collection was created, but N holds what looks like a timestamp</code></td>
+<td>compute the day count with <code>Collection.days_elapsed_since_creation</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#note"><code>Note</code></a></td>
+<td>warning</td>
+<td><code>modification time is in the future (N), now is N, and was not repaired</code></td>
+<td><code>Note.repair_modification_time()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#note"><code>Note</code></a></td>
+<td>warning</td>
+<td><code>note id=N has cloze markup in X, but note type "X" is not a cloze note type</code></td>
+<td>use a cloze notetype, or remove the markup</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#review"><code>Review</code></a></td>
+<td>warning</td>
+<td><code>entry N is typed as a learning review but took no time and pressed no button</code></td>
+<td>set <code>ReviewType.RESCHEDULED</code>, or add the time and the button</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#review"><code>Review</code></a></td>
+<td>warning</td>
+<td><code>entry N took N ms, which is above 2**31 - 1, and was not repaired</code></td>
+<td><code>Review.repair_time_above_ceiling()</code></td>
+</tr>
+<tr>
+<td><code>Collection</code></td>
+<td>warning, from <code>add_notes()</code> and <code>generate_missing_cards()</code></td>
+<td><code>the new-card position counter (N) is at or below the highest position an existing new card holds (N)</code></td>
+<td>call <code>Collection.repair_next_new_card_position()</code> before adding the notes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decks-presets-and-notetypes">Decks, presets and notetypes</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Type</th>
+<th>Message</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>warning, not for an <code>.apkg</code></td>
+<td><code>no deck has id 1</code></td>
+<td><code>Collection.collect_default_deck()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>error, for a <code>.colpkg</code></td>
+<td><code>the collection has no deck with id 1</code></td>
+<td><code>Collection.collect_default_deck()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>warning</td>
+<td><code>a normal deck names a preset the collection does not hold</code></td>
+<td><code>Collection.repair_missing_deck_configs()</code>, or add the missing preset</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#deck"><code>Deck</code></a></td>
+<td>error</td>
+<td><code>deck "X" carries preset N ("X"), but its kind blob points at preset N</code></td>
+<td><code>Deck.sync_normal_kind_config_id()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#deckconfig"><code>DeckConfig</code></a></td>
+<td>error</td>
+<td><code>learn_steps X holds a value outside [0, N] minutes</code> (or <code>relearn_steps</code>)</td>
+<td>assign the list back to the preset's <code>learn_steps</code> or <code>relearn_steps</code>, which clamps it</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#deckconfig"><code>DeckConfig</code></a></td>
+<td>warning</td>
+<td><code>"X" (id N) changed since it was read</code></td>
+<td>give the preset a new id with <code>monotonic_id()</code> and move the decks to it, since an import keeps the preset a user already has under the old id</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#note"><code>Note</code></a>, <a href="../checks-and-warnings/#notetype"><code>Notetype</code></a></td>
+<td>warning</td>
+<td><code>changed since its last stamp, but its modification time (N) is not later than that stamp (N)</code></td>
+<td>set <code>modification_time_s</code> to a later time</td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#deckconfig"><code>DeckConfig</code></a></td>
+<td>warning</td>
+<td><code>"X" has a name Anki cannot search for</code></td>
+<td><code>DeckConfig.repair_unsearchable_name()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#notetype"><code>Notetype</code></a></td>
+<td>warning</td>
+<td><code>"X" has a sort field index (N) that exceeds the number of fields (N)</code></td>
+<td><code>Notetype.repair_sort_field_idx()</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#template"><code>Template</code></a></td>
+<td>warning</td>
+<td><code>"X" sets a deck override (target_deck_id=N)</code></td>
+<td>point the override at a normal deck in the collection, or <code>Template.repair_target_deck_id()</code></td>
+</tr>
+<tr>
+<td><code>Collection</code></td>
+<td>warning, from <code>add_notes()</code> and <code>generate_missing_cards()</code></td>
+<td><code>Template "X" overrides the deck with id N, which is not in the collection or is a filtered deck</code></td>
+<td>point the override at a normal deck in the collection, or <code>Template.repair_target_deck_id()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="collection-settings-and-file-names">Collection settings and file names</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Type</th>
+<th>Message</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>warning, not for an <code>.apkg</code></td>
+<td><code>the `schedVer` config entry is N</code></td>
+<td><code>ConfigEntry(key="schedVer", value=b"2")</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>error, for a <code>.colpkg</code></td>
+<td><code>the collection's `schedVer` config entry is N</code></td>
+<td><code>ConfigEntry(key="schedVer", value=b"2")</code></td>
+</tr>
+<tr>
+<td><a href="../checks-and-warnings/#collection"><code>Collection</code></a></td>
+<td>warning, not for an <code>.apkg</code></td>
+<td><code>the `sched2021` config entry is missing or does not hold `true`</code></td>
+<td><code>ConfigEntry(key="sched2021", value=b"true")</code></td>
+</tr>
+<tr>
+<td><code>Package</code></td>
+<td>error, from <code>write_apkg()</code></td>
+<td><code>Invalid file name: Anki reads "X" as a whole collection</code></td>
+<td>choose another name, or write a <code>CollectionPackage</code></td>
+</tr>
+<tr>
+<td><code>CollectionPackage</code></td>
+<td>error, from <code>write_colpkg()</code></td>
+<td><code>Invalid file name: "X" does not end in ".colpkg"</code></td>
+<td>add the extension, or use <code>Package.write_apkg()</code> for a deck to share</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../js/mermaid.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

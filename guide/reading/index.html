@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/guide/reading/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Reading a package - genanki2</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../reference/schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../reference/card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../reference/for-contributors/validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/packages/" class="dropdown-item">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../../reference/for-contributors/frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../building/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../updating/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/guide/reading.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#reading-a-package" class="nav-link">Reading a package</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#managing-media-files" class="nav-link">Managing media files</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#source-packages" class="nav-link">Source packages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#collection-packages" class="nav-link">Collection packages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#read-errors" class="nav-link">Read errors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="reading-a-package">Reading a package</h1>
+<p>genanki2 reads packages that use the latest database schema (v18) and any package format. It does not read Anki's "Support older Anki versions" export, which uses the old collection format (v11). Reading a package validates every table and repairs a few values the way Anki does when it saves them; <a href="../repairs/">Repairs</a> lists them.</p>
+<pre class="highlight"><code class="language-python">from genanki2 import Package
+
+pkg = Package.read_apkg("italian.apkg", keep_source_media=True)
+collection = pkg.collection</code></pre>
+<p>The collection contains lists for everything it holds (decks, presets, notetypes, notes, etc.), either read or added manually. See <a href="../concepts/#package-and-collection">Package and collection</a> for the full details.</p>
+<blockquote>
+<p>It also has a few lists for orphaned objects (fields, templates, notes, cards and reviews). These are objects referencing other objects which are not present in the database and cannot be modeled.</p>
+</blockquote>
+<p>The collection has lookup methods to find single objects:</p>
+<ul>
+<li><code>collection.get_config_entry(key)</code></li>
+<li><code>collection.get_deck_config()</code>, by id or by name</li>
+<li><code>collection.get_deck()</code>, by id or by name</li>
+<li><code>collection.get_notetype()</code>, by id or by name</li>
+<li><code>collection.get_note()</code>, by id or by guid</li>
+</ul>
+<blockquote>
+<p>In case a lookup method cannot find what you are looking for, try a manual search in the corresponding orphan list (<code>collection.orphan_*</code>).</p>
+</blockquote>
+<p>Example:</p>
+<pre class="highlight"><code class="language-python">vocabulary = collection.get_deck(name="Italian::Vocabulary")
+word = collection.get_notetype(name="Italian word")
+casa = collection.get_note(guid=guid_for(word.id, "casa"))
+for note in collection.notes:
+  print(note["Italian"], note.tags)</code></pre>
+<p><code>examples/read_package.py</code> prints a summary of a package.</p>
+<h2 id="managing-media-files">Managing media files</h2>
+<p>Media files can be read in 2 ways:</p>
+<ol>
+<li>
+<p>Using <code>extract_dir="..."</code> writes all the media files to a folder. This allows inspecting the media files and replacing them easily on the disk. As a consequence, <code>pkg.media</code> holds their paths after the reading finished.</p>
+<p>An extracted file replaces a file of the same name already in the directory. With <code>overwrite=False</code>, the read raises <code>Genanki2Error</code> instead and extracts nothing.</p>
+<blockquote>
+<p><code>extract_dir</code> has a secondary effect: it also extracts the collection database in the same directory. It is an SQLite file named <code>collection.anki21b</code> (according to the latest package format; <code>.anki2</code> or <code>.anki21</code> for the older package formats). This makes it convenient to explore the database using specialized software or alter it using scripts (for example, using genanki2's <code>Collection.read_sqlite()</code> and <code>collection.write_sqlite()</code>). The SQLite file is ignored by the write process.</p>
+</blockquote>
+</li>
+<li>
+<p>Using <code>keep_source_media=True</code> leaves them in the source file, but keeps track of them. The next write process copies them from the source file into the newly written package. This makes it easy to correct some notes or add some new ones, without having to extract them and occupy disk space. Of course, this behaviour only works if the source file is still present during the write and hasn't changed since the read. The package is written to another path: writing over the source file is refused (details <a href="../../reference/for-contributors/packages/#a-kept-media-source-is-checked-before-writing">here</a>).</p>
+</li>
+</ol>
+<p>With neither, the package is read without its media. A warning is shown that media files have been ignored and that writing the package back refuses any note that refers to a file (in this case, <code>pkg.media</code> is an empty list).</p>
+<h2 id="source-packages">Source packages</h2>
+<p>A source package is a package whose media files are copied when this package is written. Reading with <code>keep_source_media=True</code> makes the package being read the source. <code>pkg.add_source_media(path)</code> sets one on any package, read or newly built, for example to reuse the media files of the last release in a fresh build without extracting them:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">API</label><label for="__tabbed_1_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import package
+
+pkg, collection = package()
+pkg.add_source_media("italian.apkg")</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-python">from genanki2 import Collection, Package
+
+pkg = Package(collection=Collection.default())
+pkg.add_source_media("italian.apkg")</code></pre>
+</div>
+</div>
+</div>
+<p>Notes can refer to the source's files as to any file in <code>pkg.media</code>, and the write counts them as carried. The files stay in the source until the write, so it has to still be present and unchanged then. A file in <code>pkg.media</code> with the same name as a file in the source is written instead of it (<code>pkg.media</code> has priority over the source's media). An unused source file is warned about and <code>pkg.trim_unused_media()</code> drops it as it drops the unused files in <code>pkg.media</code>. Names that Anki would not store are repaired as on a read, with the same warning.</p>
+<p>A package has a <strong>single</strong> source, so adding one replaces the previous one. <code>add_source_media()</code> raises if the package at <code>path</code> carries no media files.</p>
+<blockquote>
+<p>If you want to combine media from multiple packages, either extract all the media files, then write one containing all, or perform multiple steps of read-&gt;add_source_media()-&gt;write, each step reading the package from the last step and adding media from another package.</p>
+</blockquote>
+<p><code>pkg.remove_source_media()</code> removes the source, so the next write copies nothing from it.</p>
+<h2 id="collection-packages">Collection packages</h2>
+<p>An <code>.apkg</code> is a shared deck (or decks) and merges into the collection of whoever imports it.</p>
+<p>A <code>.colpkg</code> is an export of a user's entire collection. When imported, it replaces their whole collection. This is what Anki writes for "Export collection" and for its backups.</p>
+<p>genanki2 models this with <code>CollectionPackage</code>. Its methods <code>CollectionPackage.read_colpkg()</code> and <code>colpkg.write_colpkg()</code> read and write one, for changing your own collection or backup.</p>
+<ul>
+<li><strong>A restore doesn't repair anything.</strong> Anki replaces the collection and marks the schema as modified, so the next sync is a one-way full upload.</li>
+<li><strong>Media files are added, never removed.</strong> Anki saves to disk each file that the <code>.colpkg</code> carries unless the media folder already holds an equal one. A backup can hold thousands of files: <code>read_colpkg(path, keep_source_media=True)</code> followed by <code>write_colpkg()</code> to a new path copies them without extracting them.</li>
+<li><strong>The file name decides the import.</strong> Anki restores any file ending in <code>.colpkg</code> or named <code>collection.apkg</code> or <code>backup-*.apkg</code>, and merges every other <code>.apkg</code>. <code>write_apkg()</code> refuses those three names, since a deck written under one of them would replace the collection of whoever imports it, and <code>write_colpkg()</code> refuses a name without the <code>.colpkg</code> suffix.</li>
+<li><strong><code>write_colpkg()</code> writes the latest package format only.</strong> Anki's "Support older Anki versions" collection export uses schema 11, which genanki2 does not read.</li>
+</ul>
+<p>The API does not provide a method to create a collection package. One built from scratch needs all the defaults that Anki adds to an empty collection. Use this recipe:</p>
+<pre class="highlight"><code class="language-python">from genanki2 import Collection, CollectionPackage
+
+colpkg = CollectionPackage(collection=Collection.anki_default())</code></pre>
+<h2 id="read-errors">Read errors</h2>
+<p>A failed read raises one of two errors, both subclasses of <code>Genanki2Error</code>:</p>
+<ul>
+<li><code>PackageReadError</code>: the file is not a package genanki2 can make sense of. It is not a zip file, it carries neither a <code>meta</code> entry nor a collection entry, an entry does not decompress, or its media map does not parse. A write raises it too when the <a href="#source-packages">source package</a> of its media is gone or has changed since it was added.</li>
+<li><code>CollectionReadError</code>: the package is intact, but the database inside is not a collection genanki2 can read. It uses another schema version (such as the v11 that "Support older Anki versions" exports), misses a table or a column, or holds rows that do not fit together, such as a notetype whose fields are not numbered from 0.</li>
+</ul>
+<p>A collection that reads but holds a value out of its range raises pydantic's <code>ValidationError</code> instead.</p>
+<p>To recover a package that genanki2 cannot read, import it into Anki and export it again; Anki rewrites the collection in the current format. If genanki2 still cannot read the export, try to fix the values in Anki. If Anki also refuses the import, extract the package and edit the database by hand. With <code>extract_dir</code>, the database is written to the directory before it is read, so it is still there to inspect after a <code>CollectionReadError</code>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../js/mermaid.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

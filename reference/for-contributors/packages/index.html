@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://vladvrabie.github.io/genanki2/reference/for-contributors/packages/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Reading and collection packages - genanki2</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../../css/tabs.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">genanki2</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guide</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../guide/concepts/" class="dropdown-item">Concepts</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/building/" class="dropdown-item">Building a deck</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/reading/" class="dropdown-item">Reading a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/updating/" class="dropdown-item">Updating a package</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/checks-and-warnings/" class="dropdown-item">Checks and warnings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/settings/" class="dropdown-item">Settings</a>
+</li>
+                                    
+<li>
+    <a href="../../../guide/repairs/" class="dropdown-item">Repairs</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../../migrating-from-genanki/" class="nav-link">Migrating from genanki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../schema-v18/" class="dropdown-item">Collection schema v18</a>
+</li>
+                                    
+<li>
+    <a href="../../card-generation/" class="dropdown-item">Card generation</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">For contributors</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../validation/" class="dropdown-item">Validation</a>
+</li>
+            
+<li>
+    <a href="../models/" class="dropdown-item">Model shapes</a>
+</li>
+            
+<li>
+    <a href="../repairs/" class="dropdown-item">Repairs that alter what they read</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Reading and collection packages</a>
+</li>
+            
+<li>
+    <a href="../frozen-models/" class="dropdown-item">Frozen models: limitations and possible solutions</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#properdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../repairs/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../frozen-models/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/vladvrabie/genanki2/edit/master/docs/reference/for-contributors/packages.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#reading-and-collection-packages" class="nav-link">Reading and collection packages</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#reading-a-package" class="nav-link">Reading a package</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#collection-packages" class="nav-link">Collection packages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="reading-and-collection-packages">Reading and collection packages</h1>
+<p>The reasons behind how the reader and the two writers behave. What they do is in <a href="../../../guide/reading/">Reading a package</a>.</p>
+<h2 id="reading-a-package">Reading a package</h2>
+<p>The reader exists for read-update-write: read the package shipped last time, change what changed, write it back. So every decision below leans towards handing back what Anki wrote, and towards failing where it cannot, rather than guessing.</p>
+<h3 id="the-envelope-names-the-entry-colver-names-the-schema">The envelope names the entry, <code>col.ver</code> names the schema</h3>
+<p>The <code>meta</code> entry, or the collection filename when there is none, decides three things: which zip entry holds the collection, whether it is compressed, and which media map format the package uses. It says nothing about the schema.</p>
+<p>So the reader opens the entry and refuses a <code>col.ver</code> other than 18. Anki accepts 11 through 18 and upgrades on open; genanki2 models one schema.</p>
+<p>Picking the entry by a name the reader recognises would go wrong: every package in the latest format also carries a schema 11 <code>collection.anki2</code> stub beside <code>collection.anki21b</code>, holding one "please update Anki" note. A reader that took it would read a valid collection with the wrong contents.</p>
+<h3 id="an-exported-apkg-holds-a-minimal-collection">An exported apkg holds a minimal collection</h3>
+<p>Anki builds a fresh collection for the package and inserts the exported rows into it. So the package carries the default config entries, deck 1 and preset 1, even when the export did not need them. Only <code>crt</code> and <code>creationOffset</code> are copied from the source.</p>
+<h3 id="read-errors-are-raised-outside-validators">Read errors are raised outside validators</h3>
+<p><code>PackageReadError</code> and <code>CollectionReadError</code> (see <a href="../../../guide/reading/#read-errors">Read errors</a>) are raised only from plain methods and classmethods. Pydantic wraps any <code>ValueError</code> a validator raises into a <code>ValidationError</code>, so raising them inside a validator would lose their type.</p>
+<h3 id="orphan-rows-are-kept-raw">Orphan rows are kept raw</h3>
+<p>A field, template, note, card or revlog row whose parent is missing goes to the matching <code>Collection.orphan_*</code> list, and is written back unchanged. A model cannot be built without the object its row points at, and inventing that object or dropping the row would each alter what Anki wrote.</p>
+<p>Anki deletes such rows in Check Database, and an apkg never carries them because the exporter gathers rows by reference. A collection copied off disk can hold them, though, such as revlog rows whose card was deleted.</p>
+<h3 id="a-model-that-raises-fails-the-whole-read">A model that raises fails the whole read</h3>
+<p>There is no lenient mode, for the same reason the models have <a href="../validation/#permissive-while-building-strict-at-the-write">no strictness setting</a>. The recovery path is the database that <code>extract_dir</code> writes before parsing it.</p>
+<h3 id="a-deck-naming-a-missing-preset-keeps-the-id">A deck naming a missing preset keeps the id</h3>
+<p>Such a deck reads with <code>config = None</code> and keeps its preset id. Anki schedules it on preset 1 and never rewrites the id, so the reader invents no preset and repairs nothing. The write warns, and the repair is opt-in (see <a href="../../../guide/repairs/#decks-and-presets">Decks and presets</a>).</p>
+<h3 id="ids-in-the-future-are-reported-not-renumbered">Ids in the future are reported, not renumbered</h3>
+<p>An id more than a day in the future stays as read. Renumbering it would rewrite identifiers the round trip owes back, and would not spare the user anything:</p>
+<ul>
+<li>The merge importer renumbers such ids on its temporary copy of every package it reads, resolving any clash with the ids the user's collection already holds.</li>
+<li>A restore renumbers nothing. The rows keep their ids until the user runs the database check, which renumbers them the same way.</li>
+</ul>
+<h3 id="a-kept-media-source-is-checked-before-writing">A kept media source is checked before writing</h3>
+<p><code>Package.media</code> holds paths on disk, so a read has to give the media files a home (see <a href="../../../guide/reading/#managing-media-files">Managing media files</a>). A kept source is checked before the destination zip is opened:</p>
+<ul>
+<li>It has to still exist.</li>
+<li>It has to hold every entry the read found.</li>
+<li>It has to declare the same envelope, since the envelope decides whether an entry is a file or a zstd frame of one.</li>
+<li>Its <code>media</code> entry has to be the one the read found, compared by the CRC-32.<ul>
+<li>In the latest envelope the map holds each file's size and SHA-1, so a changed file changes the map.</li>
+<li>A legacy map holds only names, so a file replaced there under the same name is copied as it now stands.</li>
+<li>In the latest envelope the CRC covers the map's zstd frame, so a source rewritten with the same files but another compression level is refused too.</li>
+</ul>
+</li>
+</ul>
+<p>The destination may not be the source itself, a hard link to it, or a spelling of it that a filesystem ignoring case resolves to the same file. The package would go on copying entries by a numbering the new file no longer has, and a file the new package drops would lose its only copy:</p>
+<pre class="highlight"><code class="language-python">pkg = Package.read_apkg("italian.apkg", keep_source_media=True)
+pkg.media.append("extra.txt")
+pkg.write_apkg("italian.apkg")  # Correct write, but because of "extra.txt",
+                                # after the write the tracked media files data is
+                                # out-of-sync with the actual file on disk
+pkg.write_apkg("italian.apkg")  # Second write reads the wrong bytes from the source</code></pre>
+<h3 id="media-names-are-repaired-references-are-not">Media names are repaired, references are not</h3>
+<p>The read warns with the rename mapping instead of applying it (see <a href="../../../guide/repairs/#media-references">Media references</a>), because applying it rewrites note fields, templates and CSS, which is data Anki wrote. The writer refuses a package whose references name a file it does not carry, so a caller who skips the step gets an error, not a broken deck.</p>
+<p>Anki handles the two envelopes differently: a name that is not normalized fails the whole import in the latest format, while in the legacy format it is normalized and the notes are rewritten to match. genanki2 repairs both alike on read, and leaves the strict half to the writer, where <code>Package.check_media_paths()</code> refuses any name that <code>normalize_media_name()</code> would change.</p>
+<h2 id="collection-packages">Collection packages</h2>
+<p>What a restore does and which file names each writer accepts are in <a href="../../../guide/reading/#collection-packages">Collection packages</a>.</p>
+<h3 id="every-media-entry-carries-a-sha-1">Every media entry carries a SHA-1</h3>
+<p>A restore skips a file the media folder already holds, and decides that from the SHA-1 in the media entry. So <code>write_colpkg()</code> fills it on every entry.</p>
+<h3 id="each-import-is-a-class">Each import is a class</h3>
+<p><code>Package</code> and <code>CollectionPackage</code> share their fields, media handling and envelope. They differ in the file name they accept and the checks they run. <code>read_apkg()</code> and <code>read_colpkg()</code> read the same files, since nothing inside a package tells the two apart.</p>
+<p>The class the caller reads into decides how the file is written back, so no flag says which import a file is for. Moving between the two is an explicit construction from the other's fields.</p>
+<h3 id="file-names-are-matched-the-way-ankis-client-does">File names are matched the way Anki's client does</h3>
+<p>Both writers match a name case-sensitively, on the exact name, the prefix and the suffix, as Anki's desktop client does. How AnkiDroid routes a file has not been checked.</p>
+<h3 id="checks-that-differ-between-a-merge-and-a-restore">Checks that differ between a merge and a restore</h3>
+<p>The checks that a restore needs differ from a merge's wherever the verdict depends on what the importer does. Each writer passes the phases a <code>SerializationContext</code> naming its output, and the model that owns the data decides from it whether a finding is an error or a warning, and what the message says. Without a context nothing is skipped: a finding only a restore refuses is a warning, and the message names what happens under each import.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th><code>Package</code></th>
+<th><code>CollectionPackage</code></th>
+<th>Why they differ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Builtin notetype versions</td>
+<td>raises</td>
+<td>skipped</td>
+<td>A merge replaces a notetype only when the incoming one is newer, so a stamped builtin overwrites the user's copy. A restore replaces everything, and a user's collection can hold a builtin the user has since edited.</td>
+</tr>
+<tr>
+<td>Media references without a file</td>
+<td>raises</td>
+<td>warns</td>
+<td>Real collections carry them routinely (Anki's "Check Media" lists them), and writing back a backup must not fail on data the user already has. A restore removes no file, so the reference may still resolve.</td>
+</tr>
+<tr>
+<td>Ids in the future</td>
+<td>warns: Anki renumbers them on import</td>
+<td>warns: they stay until the database check</td>
+<td>The merge renumbers on its temporary copy. A restore keeps the ids, and the database check later renumbers them and moves the added dates and review times with them.</td>
+</tr>
+<tr>
+<td><code>schedVer</code> other than 2</td>
+<td>warns, when a card is out of the new queue</td>
+<td>raises</td>
+<td>A merge upgrades a package to v2 when any card is out of the new queue, which rewrites the review history. A restore upgrades nothing, so the collection opens on a scheduler Anki no longer runs, or not at all.</td>
+</tr>
+<tr>
+<td>No deck 1</td>
+<td>silent</td>
+<td>raises</td>
+<td>A merge lands in a collection that has deck 1. A restored collection without it opens, but every scheduler call fails, and the database check does not recreate it. <code>Collection.collect_default_deck()</code> adds it.</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://properdocs.org/">ProperDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script src="../../../js/mermaid.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="properdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="properdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="properdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="properdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
