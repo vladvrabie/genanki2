@@ -20,6 +20,7 @@ dependencies = [
 [project.urls]
 Source = "https://github.com/vladvrabie/genanki2"
 Issues = "https://github.com/vladvrabie/genanki2/issues"
+Documentation = "https://vladvrabie.github.io/genanki2/"
 
 [build-system]
 requires = ["hatchling"]

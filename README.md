@@ -1,10 +1,11 @@
 # genanki2
 
 [![pypi](https://img.shields.io/pypi/v/genanki2)](https://pypi.org/project/genanki2/)
+[![docs](https://img.shields.io/badge/docs-github.io-blue)](https://vladvrabie.github.io/genanki2/)
 ![versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20%7C%203.15-blue)
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/vladvrabie/genanki2/blob/main/LICENSE)
 [![Pydantic v2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev)
-[![anki schema](https://img.shields.io/badge/anki%20schema-v18-blue)](https://github.com/vladvrabie/genanki2/blob/main/docs/reference/schema-v18.md)
+[![anki schema](https://img.shields.io/badge/anki%20schema-v18-blue)](https://vladvrabie.github.io/genanki2/reference/schema-v18/)
 
 Generate, read and update Anki decks using Python.
 
@@ -172,7 +173,7 @@ When updating a notetype:
 - adding, removing or reordering a notetype's fields or templates makes a second copy of the notetype; genanki2 emits a warning.
 - renaming is safe once fields and templates have ids, so call `Notetype.fill_missing_ids()` before the first release.
 
-See [Updating a package](https://github.com/vladvrabie/genanki2/blob/main/docs/guide/updating.md) for more details.
+See [Updating a package](https://vladvrabie.github.io/genanki2/guide/updating/) for more details.
 
 ```python
 pkg.media.append("audio/it_casa.mp3")
@@ -349,7 +350,7 @@ Before writing, genanki2 runs its checks and warnings over everything in the pac
 - A check raises `Genanki2Error` for something Anki would reject or change on import (such as two fields with the same name).
 - A warning (`Genanki2Warning`) points at something Anki accepts but that is probably a mistake (such as a note whose first field is empty).
 
-genanki2 also repairs values. It normalizes names, tags and field text the way Anki does. A value that only Anki's Check Database would fix is repaired with a warning. [Repairs](https://github.com/vladvrabie/genanki2/blob/main/docs/guide/repairs.md) lists them, along with the repairs to opt into and what each warning asks for.
+genanki2 also repairs values. It normalizes names, tags and field text the way Anki does. A value that only Anki's Check Database would fix is repaired with a warning. [Repairs](https://vladvrabie.github.io/genanki2/guide/repairs/) lists them, along with the repairs to opt into and what each warning asks for.
 
 A package someone else made can hold values Anki accepts and a check refuses. Use `checks_disabled()`, `warnings_disabled()` and `dbcheck_repairs_disabled()` to turn them off. An explicit `pkg.check()`, `pkg.warn()` or repair method call inside these blocks still runs:
 
@@ -433,7 +434,7 @@ Some behaviour differs:
 
 genanki2 can't read the file genanki wrote, because it uses the old format, so go through Anki first. Import the deck, then choose File > Export and pick **Anki Deck Package**, with **Include scheduling information** and **Support older Anki versions** unticked and **Include media** ticked. Pass that export to `Package.read_apkg(path, keep_source_media=True)`, and from then on read the package each build wrote.
 
-The documentation page [Migrating from genanki](https://github.com/vladvrabie/genanki2/blob/main/docs/migrating-from-genanki.md) has every mapping and behaviour difference, finding the note for each row, recomputing genanki's guids and renaming fields on a genanki-built notetype.
+The documentation page [Migrating from genanki](https://vladvrabie.github.io/genanki2/migrating-from-genanki/) has every mapping and behaviour difference, finding the note for each row, recomputing genanki's guids and renaming fields on a genanki-built notetype.
 
 ## Examples
 

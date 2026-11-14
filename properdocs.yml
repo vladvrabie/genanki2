@@ -1,4 +1,6 @@
 site_name: genanki2
+site_url: https://vladvrabie.github.io/genanki2/
+repo_url: https://github.com/vladvrabie/genanki2/
 
 theme:
   name: mkdocs
